@@ -1,7 +1,7 @@
 ﻿using System;
-using Lexical_Analyzer.Entities;
+using LexicalAnalyzer.Entities;
 
-namespace DFA_Analyzer
+namespace LexicalAnalyzer
 {
     internal static class Program
     {
