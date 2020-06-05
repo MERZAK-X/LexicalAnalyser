@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using LexicalAnalyzer.Utils;
 
 namespace LexicalAnalyzer.Entities
@@ -143,7 +142,7 @@ namespace LexicalAnalyzer.Entities
             var state = _startState;
 
             foreach (var letter in letters)
-                try{ state = _transitions[state, letter]; } 
+                try{ state = _transitions[state, char.ToLower(letter)]; } 
                     catch (Exception) { return false; }
 
             return ((IList) this._finalStates).Contains(state);
