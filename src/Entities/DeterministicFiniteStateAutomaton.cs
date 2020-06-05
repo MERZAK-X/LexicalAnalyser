@@ -37,6 +37,7 @@ namespace LexicalAnalyzer.Entities
             _finalStates = Array.ConvertAll(finalStatesAsString, int.Parse);
             for (var i = 5; i <= lines.Length - 1; i++)
             {
+                if(lines[i].StartsWith('#')) continue; // Adds #3
                 var state = int.Parse(lines[i].Split(' ')[0]);
                 var symbol = char.Parse(lines[i].Split(' ')[1]);
                 var nextState = int.Parse(lines[i].Split(' ')[2]);
@@ -134,6 +135,18 @@ namespace LexicalAnalyzer.Entities
                 Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} The word `{word}` is {((currentAccepted) ? String.Empty : "NOT " )}accepted by the automaton's described language !");
             }
             return accepted;
+        }
+
+        public bool Accepts(string word)
+        {
+            var letters = word.ToCharArray();
+            var state = _startState;
+
+            foreach (var letter in letters)
+                try{ state = _transitions[state, char.ToLower(letter)]; } 
+                catch (Exception) { return false; }
+
+            return ((IList) this._finalStates).Contains(state);
         }
 
         public bool Accept(string word)
