@@ -125,28 +125,30 @@ namespace LexicalAnalyzer.Entities
 
         public bool Analyse(string sourceCode)
         {
-            var accepted = true;
-            var currentAccepted = false;
-            char [] separators = {' ', '\n', '\t'};
+            var accepted = true; var currentAccepted = false;
+            char [] separators = {' ', '\n', '\t', ';'};
+            var tokenId = 0; TokensMap token;
             foreach (var word in sourceCode.Split(separators))
             {
-                currentAccepted = Accept(word); // Checks whether the current word is accepted
+                tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
+                currentAccepted = (tokenId != 0); // if a final state was found
+                token = (TokensMap) tokenId; // Get token by id from the map
                 accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
-                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} The word `{word}` is {((currentAccepted) ? String.Empty : "NOT " )}accepted by the automaton's described language !");
+                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} <{word}{((token != 0) ? ","+token : string.Empty )}>");
             }
             return accepted;
         }
 
-        public bool Accepts(string word)
+        public int Accepts(string word)
         {
             var letters = word.ToCharArray();
             var state = _startState;
 
             foreach (var letter in letters)
                 try{ state = _transitions[state, char.ToLower(letter)]; } 
-                catch (Exception) { return false; }
+                catch (Exception) { return 0; }
 
-            return ((IList) this._finalStates).Contains(state);
+            return ((IList) this._finalStates).Contains(state) ? state : 0; // Return the final state instead of a bool ; 0 = no states found
         }
 
         public bool Accept(string word)
