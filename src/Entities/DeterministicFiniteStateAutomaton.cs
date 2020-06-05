@@ -31,7 +31,7 @@ namespace LexicalAnalyzer.Entities
         {
             var lines = File.ReadAllLines(filename);
             _name = Path.GetFileNameWithoutExtension(filename);
-            _statesNumber = int.Parse(lines[0]); // number of states
+            _statesNumber = int.Parse(lines[0]); // Number of states
             _alphabet = lines[1];
             _startState = int.Parse(lines[2]); // Get states from file
             var finalStatesAsString = lines[4].Split(' ');
@@ -43,14 +43,8 @@ namespace LexicalAnalyzer.Entities
                 var nextState = int.Parse(lines[i].Split(' ')[2]);
                 _states.AddIfNotExists(state);
                 _states.AddIfNotExists(nextState);
-                try
-                {
-                    _transitions.AddIfNotExists(new Transition(state, symbol, nextState));
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
+                try { _transitions.AddIfNotExists(new Transition(state, symbol, nextState)); }
+                    catch (Exception) { continue; }
             }
         }
 
@@ -129,32 +123,31 @@ namespace LexicalAnalyzer.Entities
             Console.WriteLine(this);
         }
 
+        public bool Analyse(string sourceCode)
+        {
+            var accepted = true;
+            var currentAccepted = false;
+            char [] separators = {' ', '\n', '\t'};
+            foreach (var word in sourceCode.Split(separators))
+            {
+                currentAccepted = Accept(word); // Checks whether the current word is accepted
+                accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
+                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} The word `{word}` is {((currentAccepted) ? String.Empty : "NOT " )}accepted by the automaton's described language !");
+            }
+            return accepted;
+        }
+
         public bool Accept(string word)
         {
             var letters = word.ToCharArray();
             var state = _startState;
 
             foreach (var letter in letters)
-                try
-                {
-                    state = _transitions[state, letter];
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                try{ state = _transitions[state, letter]; } 
+                    catch (Exception) { return false; }
 
             return ((IList) this._finalStates).Contains(state);
         }
-
-        /*private int Σ(int state, char alpha)
-        {
-            if (!_transitionTable.TryGetValue(state, out var transition)) return 0;
-            if (!transition.ContainsKey(alpha)) return 0;
-            var nextState = _transitionTable[state][alpha];
-            return nextState;
-        }*/
-
         #endregion
     }
 }

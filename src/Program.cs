@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using LexicalAnalyzer.Entities;
 
 namespace LexicalAnalyzer
@@ -11,13 +12,8 @@ namespace LexicalAnalyzer
             {
                 var automaton = DFSA.CreateInstance(args[0]);
                 automaton.Print();
-                var word = "∅";
-                while(word != "-1"){
-                    Console.WriteLine("Enter a word (-1 to exit) : ");
-                    word = Console.ReadLine();
-                    var accepted = automaton.Accept(word);
-                    Console.WriteLine($@"{((accepted) ? '\u2713' : '\u2717')} The word `{word}` is {((accepted) ? String.Empty : "NOT " )}accepted by the automaton's described language !");
-                }
+                var accepted = automaton.Analyse(File.ReadAllText(args[1]));
+                Console.WriteLine($@"{'\n'}{((accepted) ? '\u2713' : '\u2717')} The source file `{Path.GetFileName(args[1])}` is {((accepted) ? String.Empty : "NOT " )}accepted by the automaton's described language !");
             }
             catch (Exception e)
             {
