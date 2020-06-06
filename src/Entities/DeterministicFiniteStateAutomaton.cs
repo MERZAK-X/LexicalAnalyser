@@ -16,6 +16,7 @@ namespace LexicalAnalyzer.Entities
         private List<int> _states = new List<int>();
         private List<string> _keywords;
         private string _alphabet, _name;
+        private bool comment = false; // Checks whether the input is a comment
         private TransitionsMap _transitions = new TransitionsMap();
 
         #endregion
@@ -135,6 +136,7 @@ namespace LexicalAnalyzer.Entities
             foreach (var word in sourceCode.Split(separators))
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
+                if (tokenId == -1) continue;
                 tokenId = (tokenId == 5 || tokenId == 9) ? 10 // Checks if a `REL OP`, since enums cannot take multi-values
                     : (tokenId == 2) ? 11 // Checks if a `ARTH OP`, since enums cannot take multi-values
                     : (tokenId == 3) ? 8 // Checks if a `REAL`, since enums cannot take multi-values
@@ -151,6 +153,8 @@ namespace LexicalAnalyzer.Entities
         {
             var letters = (word.ToLower()).ToCharArray();
             var state = _startState;
+            if (!comment) {comment = word.StartsWith("(*");}
+            if (comment) {comment = !word.EndsWith("*)"); return -1;}
             if (_keywords.Any(x=> x == word)) return 12; // Checks whether the word is a keyword from the _keywords array
             foreach (var letter in letters)
                 try{ state = _transitions[state, letter]; /*Console.WriteLine(letter); // Uncomment for debug */} 
