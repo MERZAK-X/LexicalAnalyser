@@ -135,6 +135,7 @@ namespace LexicalAnalyzer.Entities
             foreach (var word in sourceCode.Split(separators))
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
+                tokenId = (tokenId == 5 || tokenId == 9) ? 10 : tokenId; // Checks if a `REL OP`, since enums cannot take multi-values
                 currentAccepted = (tokenId != 0); // if a final state was found
                 token = (TokensMap) tokenId; // Get token by id from the map
                 accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
