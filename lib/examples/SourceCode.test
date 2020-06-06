@@ -1,21 +1,6 @@
-Some string that should be
-y3s accepted
-INCLUDING UPPERCASE
--but 7his $hould n@t
-if else if else
-begin then end
-_helloworldidentifier
-164.389
-17.54E^485512
-15 < 16
-16 <> 16
-15 > 14
-18 >= 13
-12 <= 10
-15 + 10
-100 - 66
-2 * 8
-66 / 44
--1
--
 (* test comment *)
+IF 13.4 >= 77
+THEN
+    variable = 99 - 98;
+ELSE
+    var = 17.54E^485512
