@@ -137,6 +137,7 @@ namespace LexicalAnalyzer.Entities
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
                 tokenId = (tokenId == 5 || tokenId == 9) ? 10 // Checks if a `REL OP`, since enums cannot take multi-values
                     : (tokenId == 2) ? 11 // Checks if a `ARTH OP`, since enums cannot take multi-values
+                    : (tokenId == 3) ? 8 // Checks if a `REAL`, since enums cannot take multi-values
                     : tokenId;
                 currentAccepted = (tokenId != 0); // if a final state was found
                 token = (TokensMap) tokenId; // Get token by id from the map
@@ -152,7 +153,7 @@ namespace LexicalAnalyzer.Entities
             var state = _startState;
             if (_keywords.Any(x=> x == word)) return 12; // Checks whether the word is a keyword from the _keywords array
             foreach (var letter in letters)
-                try{ state = _transitions[state, letter]; } 
+                try{ state = _transitions[state, letter]; /*Console.WriteLine(letter); // Uncomment for debug */} 
                 catch (NullReferenceException) { return 0; }
                 catch (Exception) { return 0; }
 
