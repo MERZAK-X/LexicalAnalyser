@@ -15,8 +15,8 @@ namespace LexicalAnalyzer.Entities
         private int[] _finalStates;
         private List<int> _states = new List<int>();
         private List<string> _keywords;
-        private string _alphabet, _name;
-        private string[] _commentDelimiter;
+        private readonly string _alphabet, _name;
+        private readonly string[] _commentDelimiter;
         private string _string = string.Empty; 
         private bool _isText = false, _comment = false; // Checks whether the input is a string / comment
         private TransitionsMap _transitions = new TransitionsMap();
@@ -34,16 +34,37 @@ namespace LexicalAnalyzer.Entities
         private DFSA(string filename)
         {
             var lines = File.ReadAllLines(filename);
+
+            #region Automaton info
             _name = Path.GetFileNameWithoutExtension(filename);
             _statesNumber = int.Parse(lines[0]); // Number of states
+            #endregion
+
+            #region Alphabet
             _alphabet = lines[1];
+            #endregion
+
+            #region Start State
             _startState = int.Parse(lines[2]); // Get states from file
-            var finalStatesAsString = lines[4].Split(' ');
+            #endregion
+
+            #region Final States
+            var finalStatesAsString = lines[3].Split(' ');
             _finalStates = Array.ConvertAll(finalStatesAsString, int.Parse);
-            _keywords = lines[5].Split(' ').ToList();
+            #endregion
+
+            #region Keywords
+            _keywords = lines[4].Split(' ').ToList();
             _keywords = _keywords.ConvertAll(keyword => keyword.ToLower());
-            _commentDelimiter = lines[6].Split(' ').ToArray();
-            for (var i = 7; i <= lines.Length - 1; i++)
+            #endregion
+
+            #region Comment Delimiter
+            _commentDelimiter = lines[5].Split(' ').ToArray();
+            #endregion
+
+            #region Tansitions
+
+            for (var i = 6; i <= lines.Length - 1; i++)
             {
                 if(lines[i].StartsWith('#')) continue; // Adds #3
                 var state = int.Parse(lines[i].Split(' ')[0]);
@@ -52,8 +73,11 @@ namespace LexicalAnalyzer.Entities
                 _states.AddIfNotExists(state);
                 _states.AddIfNotExists(nextState);
                 try { _transitions.AddIfNotExists(new Transition(state, symbol, nextState)); }
-                    catch (Exception) { continue; }
+                catch (Exception) { continue; }
             }
+
+            #endregion
+            
         }
 
         #endregion
@@ -145,29 +169,32 @@ namespace LexicalAnalyzer.Entities
 
                 #region Check for Tokens that could not be described in TockensMap Enum
                 switch (tokenId) {
-                    case -1: case -2: // Comment occured
+                    case -1: case -2: // Comment or string.Empty occured 
                         continue;
-                    case 2: // Checks if a `ARTH OP`, since enums cannot take multi-values
+                    case 2: // Checks if a `ARTH OP`, since enums cannot take multi-values 
                         tokenId = 11; break;
-                    case 3: // Checks if a `REAL`, since enums cannot take multi-values
+                    case 3: // Checks if a `REAL`, since enums cannot take multi-values 
                         tokenId = 8; break;
-                    case 5: case 9: // Checks if a `REL OP`, since enums cannot take multi-values
+                    case 5: case 9: // Checks if a `REL OP`, since enums cannot take multi-values 
                         tokenId = 10; break;
-                    case 13: // Checks for string and aggregates it 
-                        _string += ' '+word+' '; break;
+                    case 13: // Checks for string and aggregates it  
+                        _string += ' '+word.Replace('"', '\0') +' ';
+                        if (_isText) continue;
+                        break;
                 }
                 #endregion
                 
                 currentAccepted = (tokenId != 0); // if a final state was found
                 token = (TokensMap) tokenId; // Get token by id from the map
                 accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
-                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} <{word}{((token != 0) ? ", "+token : string.Empty )}>");
+                
+                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} <{((tokenId==13) ? _string : word)}{((token != 0) ? ","+token : string.Empty )}>");
             }
             
             return accepted;
         }
 
-        public int Accepts(string word)
+        private int Accepts(string word)
         {
             #region Variables
             var letters = (word.ToLower()).ToCharArray();
@@ -189,13 +216,14 @@ namespace LexicalAnalyzer.Entities
             #endregion
 
             #region Check for strings
-            if (!_isText)
-                _isText = word.StartsWith('"');
-            
-            if (_isText){
-                _isText = !word.EndsWith('"');
-                return 13;
+
+            if (word.Contains('"')){
+                _isText = !_isText; return 13;
             }
+            
+            if (_isText)
+                return 13;
+            
             #endregion
 
             #region Check for Keywords
@@ -211,7 +239,7 @@ namespace LexicalAnalyzer.Entities
 
             #endregion
 
-            return ((IList) this._finalStates).Contains(state) ? state : 0; // Return the final state instead of a bool ; 0 = no states found
+            return ((IList) _finalStates).Contains(state) ? state : 0; // Return the final state instead of a bool ; 0 = no states found
         }
 
         public bool Accept(string word)
@@ -223,7 +251,7 @@ namespace LexicalAnalyzer.Entities
                 try{ state = _transitions[state, char.ToLower(letter)]; } 
                     catch (Exception) { return false; }
 
-            return ((IList) this._finalStates).Contains(state);
+            return ((IList) _finalStates).Contains(state); // Returns whether a word is accepted by the automaton or not
         }
         #endregion
     }

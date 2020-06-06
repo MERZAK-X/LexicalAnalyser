@@ -1,7 +1,6 @@
 13
 abcdefghijklmnopqrstuvwxyz_0123456789<>()"+-*/=
 0
-9
 1 2 3 4 5 8 9 10 11
 BEGIN IF THEN ELSE END
 (* *)
@@ -72,9 +71,10 @@ BEGIN IF THEN ELSE END
 1 y 1
 1 z 1
 1 _ 1
-##############
-# REAL & INT #
-##############
+###########
+# NUMBERS #
+###########
+#
 # INT
 0 0 4
 0 1 4
@@ -107,6 +107,7 @@ BEGIN IF THEN ELSE END
 4 7 4
 4 8 4
 4 9 4
+#####
 # REAL
 4 . 15
 15 0 3
