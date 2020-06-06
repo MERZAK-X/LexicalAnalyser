@@ -3,12 +3,12 @@ namespace LexicalAnalyzer.Entities
     internal enum TokensMap
     {
         ID      = 1,       
-        KEYWORD = 2,
-        OP      = 3,
-        REL     = 4,
-        STRING  = 5,
-        INT     = 6,
-        REAL    = 7,
-        COMMENT = 8
+        KEYWORD = 12,
+        OP      = 11,
+        REL     = 8,
+        STRING  = 13,
+        INT     = 4,
+        REAL    = 8,
+        COMMENT = 14
     }
 }

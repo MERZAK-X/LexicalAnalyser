@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using LexicalAnalyzer.Utils;
 
 namespace LexicalAnalyzer.Entities
@@ -13,6 +14,7 @@ namespace LexicalAnalyzer.Entities
         private int _startState, _statesNumber;
         private int[] _finalStates;
         private List<int> _states = new List<int>();
+        private List<string> _keywords;
         private string _alphabet, _name;
         private TransitionsMap _transitions = new TransitionsMap();
 
@@ -35,7 +37,9 @@ namespace LexicalAnalyzer.Entities
             _startState = int.Parse(lines[2]); // Get states from file
             var finalStatesAsString = lines[4].Split(' ');
             _finalStates = Array.ConvertAll(finalStatesAsString, int.Parse);
-            for (var i = 5; i <= lines.Length - 1; i++)
+            _keywords = lines[5].Split(' ').ToList();
+            _keywords = _keywords.ConvertAll(keyword => keyword.ToLower());
+            for (var i = 6; i <= lines.Length - 1; i++)
             {
                 if(lines[i].StartsWith('#')) continue; // Adds #3
                 var state = int.Parse(lines[i].Split(' ')[0]);
@@ -141,11 +145,11 @@ namespace LexicalAnalyzer.Entities
 
         public int Accepts(string word)
         {
-            var letters = word.ToCharArray();
+            var letters = (word.ToLower()).ToCharArray();
             var state = _startState;
-
+            if (_keywords.Any(x=> x == word)) return 12; // Checks whether the word is a keyword from the _keywords array
             foreach (var letter in letters)
-                try{ state = _transitions[state, char.ToLower(letter)]; } 
+                try{ state = _transitions[state, letter]; } 
                 catch (Exception) { return 0; }
 
             return ((IList) this._finalStates).Contains(state) ? state : 0; // Return the final state instead of a bool ; 0 = no states found
