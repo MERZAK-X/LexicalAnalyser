@@ -197,27 +197,39 @@ namespace LexicalAnalyzer.Entities
         private int Accepts(string word)
         {
             #region Variables
+
             var letters = (word.ToLower()).ToCharArray();
             var state = _startState;
+
             #endregion
 
             #region Check for empty word string.Empty
+
             if (word == string.Empty) return -2; // Check for empty word '' caused by spaces in source code
+
             #endregion
 
             #region Check for comments
+
             if (!_comment)
                 _comment = word.StartsWith(_commentDelimiter[0]);
-            
-            if (_comment){
+
+            if (_comment)
+            {
                 _comment = !word.EndsWith(_commentDelimiter[1]);
                 return -1;
             }
+
             #endregion
 
             #region Check for strings
 
-            if (word.Contains('"')){ // sets _isText flag to on/off when facing a double quote
+            if ((word.StartsWith('"') && word.EndsWith('"')) && word != "\""){ // Cases where string is declared as "string" 
+                _string = string.Empty; // Fixes #9
+                return 13;
+            }
+
+            if (word.Contains('"')){ // Sets _isText flag to on/off when facing a double quote
                 _isText = !_isText;
                 if (_isText) _string = string.Empty; // Fixes #9
                 return 13;
