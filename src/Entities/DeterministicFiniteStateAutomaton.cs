@@ -217,8 +217,10 @@ namespace LexicalAnalyzer.Entities
 
             #region Check for strings
 
-            if (word.Contains('"')){
-                _isText = !_isText; return 13;
+            if (word.Contains('"')){ // sets _isText flag to on/off when facing a double quote
+                _isText = !_isText;
+                if (_isText) _string = string.Empty; // Fixes #9
+                return 13;
             }
             
             if (_isText)
@@ -233,7 +235,7 @@ namespace LexicalAnalyzer.Entities
             #region Calculate the Final State
 
             foreach (var letter in letters)
-                try{ state = _transitions[state, letter]; /*Console.WriteLine(letter); // Uncomment for debug */} 
+                try{ state = _transitions[state, letter]; /*Console.WriteLine(letter); /* Uncomment for debug */} 
                 catch (NullReferenceException) { return 0; }
                 catch (Exception) { return 0; }
 
