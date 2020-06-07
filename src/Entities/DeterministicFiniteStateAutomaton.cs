@@ -160,7 +160,7 @@ namespace LexicalAnalyzer.Entities
             #region Variables
             var accepted = true; var currentAccepted = false;
             char [] separators = {' ', '\n', '\t', ';'};
-            var tokenId = 0; TokensMap token;
+            var tokenId = 0; Token token;
             #endregion
             
             foreach (var word in sourceCode.Split(separators))
@@ -185,7 +185,7 @@ namespace LexicalAnalyzer.Entities
                 #endregion
                 
                 currentAccepted = (tokenId != 0); // if a final state was found
-                token = (TokensMap) tokenId; // Get token by id from the map
+                token = (Token) tokenId; // Get token by id from the map
                 accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
                 
                 Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} <{((tokenId==13) ? _string : word)}{((token != 0) ? ","+token : string.Empty )}>");
