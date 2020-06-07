@@ -227,7 +227,7 @@ namespace LexicalAnalyzer.Entities
             #endregion
 
             #region Check for Keywords
-            if (_keywords.Any(x=> x == word)) return 12; // Checks whether the word is a keyword from the _keywords array
+            if (_keywords.Any(x=> x == word.ToLower())) return 12; // Checks whether the word is a keyword from the _keywords array
             #endregion
 
             #region Calculate the Final State
