@@ -1,17 +1,16 @@
 # LexicalAnalyser
 _Lexical Analyser_ is a program that determines whether a `source code` is accepted by a given `DFSA` **Deterministic Finite State Automaton**. 
 
-```
-Token   -> FinalState
-ID      -> 1  
-KEYWORD -> 12 
-ARTH OP -> 2,11 
-REL OP  -> 5,9,10 
-STRING  -> 13 
-INT     -> 4  
-REAL    -> 3,8  
-COMMENT -> -1
-```
+**Token**|**FinalState**
+:-----|:-----:
+|ID|1|
+|KEYWORD|12|
+|ARTH OP|2, 11|
+|REL OP|5, 9, 10|
+|STRING|13|
+|INT|4|
+|REAL|3, 8|
+|COMMENT|14|
 
 ## Automaton's file format
 #### Template :
