@@ -18,10 +18,10 @@ _Lexical Analyser_ is a program that determines whether a `source code` is accep
 Number of states
 Alphabets
 Initial State
-Final states separated by ` `
-Language keywords separated by ` `
-Transitions [StartState Symbol EndState]
-Comments [Starting from line 7] `# Comment`
+Final states separated by space
+Language keywords separated by space
+Transitions {StartState Symbol EndState} [From 7th line to the end of the file]
+Comments {# Comment} [Starting from line 7]
 ```
 #### Example :
 
@@ -37,7 +37,7 @@ Automaton [SimpleLanguageAutomaton] : E = {0, 1, 4, 2, 15, 3, 6, 7, 8, 5, 9, 10,
 ✓ <BEGIN,KEYWORD>
 ✓ <var,ID>
 ✓ <=,REL_OP>
-✓ < some  quite  long  string ,STRING>
+✓ <some  quite  long  string,STRING>
 ✓ <IF,KEYWORD>
 ✓ <13.4,REAL>
 ✓ <>=,REL_OP>
