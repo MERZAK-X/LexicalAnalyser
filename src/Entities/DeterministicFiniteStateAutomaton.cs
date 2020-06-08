@@ -178,8 +178,9 @@ namespace LexicalAnalyzer.Entities
                     case 5: case 9: // Checks if a `REL OP`, since enums cannot take multi-values 
                         tokenId = 10; break;
                     case 13: // Checks for string and aggregates it  
-                        _string += ' '+word.Replace('"', '\0') +' ';
+                        _string += word.Replace('"', '\0')+' ';
                         if (_isText) continue;
+                        _string = _string.Substring(0, _string.Length - 1); // Removes the extra space after building the _string
                         break;
                 }
                 #endregion
