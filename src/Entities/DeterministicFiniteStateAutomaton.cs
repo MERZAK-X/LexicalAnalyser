@@ -20,6 +20,7 @@ namespace LexicalAnalyzer.Entities
         private string _string = string.Empty; 
         private bool _isText = false, _comment = false; // Checks whether the input is a string / comment
         private TransitionsMap _transitions = new TransitionsMap();
+        private TokensList _tokens = new TokensList();
 
         #endregion
 
@@ -160,10 +161,12 @@ namespace LexicalAnalyzer.Entities
             #region Variables
             var accepted = true; var currentAccepted = false;
             char [] separators = {' ', '\n', '\t', ';'};
-            var tokenId = 0; Token token;
+            var words = sourceCode.Split(separators);
+            Token token; var tokenId = 0;
+            _tokens?.Clear(); // Clear old results if any
             #endregion
             
-            foreach (var word in sourceCode.Split(separators))
+            foreach (var word in words)
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
 
@@ -184,15 +187,14 @@ namespace LexicalAnalyzer.Entities
                         break;
                 }
                 #endregion
+
+                token = new Token(tokenId, ((tokenId==13) ? _string : word));
+                _tokens.Add(token);
                 
-                currentAccepted = (tokenId != 0); // if a final state was found
-                token = (Token) tokenId; // Get token by id from the map
-                accepted = accepted && currentAccepted; // If the previous words and current one are accepted -> for the last return statement
-                
-                Console.WriteLine($@"{((currentAccepted) ? '\u2713' : '\u2717')} <{((tokenId==13) ? _string : word)}{((token != 0) ? ","+token : string.Empty )}>");
+                Console.WriteLine($@"{token}");
             }
             
-            return accepted;
+            return _tokens.Accepted();
         }
 
         private int Accepts(string word)

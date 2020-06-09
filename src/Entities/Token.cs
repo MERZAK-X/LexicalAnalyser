@@ -1,14 +1,23 @@
 namespace LexicalAnalyzer.Entities
 {
-    internal enum Token
+    public class Token
     {
-        ID      = 1,
-        KEYWORD = 12,
-        ARTH_OP = 11, // & 2
-        REL_OP  = 10, // & 5 & 9
-        STRING  = 13,
-        INT     = 4,
-        REAL    = 8, // & 3
-        COMMENT = 14
+        private TokenType _tokenId;
+        private string _value;
+        private bool _accepted;
+
+        public Token(int tokenId, string value)
+        {
+            _tokenId = (TokenType) tokenId;
+            _value = value;
+            _accepted = (_tokenId != 0); // True if the token has an accepted final state != 0
+        }
+
+        public override string ToString()
+        {
+            return $@"{((_accepted) ? '\u2713' : '\u2717')} <{(_value)}{((_accepted) ? ","+_tokenId : string.Empty )}>";
+        }
+
+        public bool Accepted() => _accepted;  // same as => (_tokenId != 0) but without recalculating
     }
 }
