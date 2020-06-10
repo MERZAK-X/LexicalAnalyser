@@ -84,73 +84,6 @@ namespace LexicalAnalyzer.Entities
         #endregion
 
         #region Functions & Methods
-
-        public override string ToString()
-        {
-            #region Variables
-
-            var automaton = $"Automaton [{_name}] : ";
-
-            #endregion
-
-            #region States {E}
-
-            automaton += "E = {";
-            for (var i = 0; i < _states.Count; i++)
-            {
-                automaton += _states[i];
-                if (i == _states.Count - 1) continue;
-                automaton += (i != _states.Count - 1) ? ", " : string.Empty;
-            }
-
-            automaton += "} ; ";
-
-            #endregion
-
-            #region Alphabet {A}
-
-            var iteration = 1;
-            automaton += "A = {";
-            foreach (var c in _alphabet)
-            {
-                automaton += c;
-                if (iteration >= _alphabet.Length) continue;
-                automaton += ", ";
-                iteration++;
-            }
-
-            #endregion
-
-            #region Transitions {σ}
-
-            automaton += $"}} ; Transitions: {{{_transitions}}}";
-
-            #endregion
-
-            #region Initial States {q₀}
-
-            automaton += $" ; q₀ = {this._startState} ; ";
-
-            #endregion
-
-            #region Final States {F}
-
-            iteration = 1;
-            automaton += "F = {";
-            foreach (var finalState in _finalStates)
-            {
-                automaton += finalState;
-                if (iteration >= _finalStates.Length) continue;
-                automaton += ", ";
-                iteration++;
-            }
-
-            automaton += "}\n";
-            return automaton;
-
-            #endregion
-        }
-
         public void Print()
         {
             Console.WriteLine(this);
@@ -169,7 +102,7 @@ namespace LexicalAnalyzer.Entities
             foreach (var word in words)
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
-
+                
                 #region Check for Tokens that could not be described in TockensMap Enum
                 switch (tokenId) {
                     case -1: case -2: // Comment or string.Empty occured 
@@ -190,9 +123,9 @@ namespace LexicalAnalyzer.Entities
 
                 token = new Token(tokenId, ((tokenId==13) ? _string : word));
                 _tokens.Add(token);
-                
-                Console.WriteLine($@"{token}");
             }
+            
+            Console.WriteLine($@"{_tokens}");
             
             return _tokens.Accepted();
         }
@@ -269,6 +202,58 @@ namespace LexicalAnalyzer.Entities
                     catch (Exception) { return false; }
 
             return ((IList) _finalStates).Contains(state); // Returns whether a word is accepted by the automaton or not
+        }
+        
+        public override string ToString()
+        {
+            #region Variables
+
+            var automaton = $"Automaton [{_name}] : ";
+
+            #endregion
+
+            #region States {E}
+
+            automaton += "E = {";
+            for (var i = 0; i < _states.Count; i++)
+            {
+                automaton += _states[i];
+                if (i == _states.Count - 1) continue;
+                automaton += (i != _states.Count - 1) ? ", " : string.Empty;
+            }
+
+            automaton += "} ; ";
+
+            #endregion
+
+            #region Alphabet {A}
+
+            automaton += "A = {";
+            automaton = _alphabet.Aggregate(automaton, (current, c) => current + ((c == _alphabet.Last()) ? $"{c}" : $"{c}, "));
+
+            #endregion
+
+            #region Transitions {σ}
+
+            automaton += $"}} ; Transitions: {{{_transitions}}}";
+
+            #endregion
+
+            #region Initial States {q₀}
+
+            automaton += $" ; q₀ = {_startState} ; ";
+
+            #endregion
+
+            #region Final States {F}
+            
+            automaton += "F = {";
+            automaton = _finalStates.Aggregate(automaton, (current, finalState) => current + ((finalState == _finalStates.Last()) ? $"{finalState}" : $"{finalState}, "));
+
+            automaton += "}\n";
+            return automaton;
+
+            #endregion
         }
         #endregion
     }
