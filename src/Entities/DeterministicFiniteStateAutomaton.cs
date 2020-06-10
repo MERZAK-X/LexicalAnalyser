@@ -92,8 +92,7 @@ namespace LexicalAnalyzer.Entities
         public bool Analyse(string sourceCode)
         {
             #region Variables
-            var accepted = true; var currentAccepted = false;
-            char [] separators = {' ', '\n', '\t', ';'};
+            char[] separators = {' ', '\n', '\t', ';'}; string[] operators = {"+","-","/","*","<",">","=","<=",">=","<>"};
             var words = sourceCode.Split(separators);
             Token token; var tokenId = 0;
             _tokens?.Clear(); // Clear old results if any
@@ -102,17 +101,36 @@ namespace LexicalAnalyzer.Entities
             foreach (var word in words)
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
+
+                var _operator = operators.Where(op => word.Contains(op))?.FirstOrDefault();
+                if (tokenId == 0 && word.Contains(_operator)) //operators.Any(op => word.Contains(op))
+                {
+                    foreach (var subword in word.SplitKeep(_operator))
+                    {
+                        tokenId = Accepts(subword);
                 
-                #region Check for Tokens that could not be described in TockensMap Enum
+                        #region Check for Tokens that should be ignored or aggregated
+                        switch (tokenId) {
+                            case -1: case -2: // Comment or string.Empty occured 
+                                continue;
+                            case 13: // Checks for string and aggregates it  
+                                _string += subword.Replace('"', '\0')+' ';
+                                if (_isText) continue;
+                                _string = _string.Substring(0, _string.Length - 1); // Removes the extra space after building the _string
+                                break;
+                        }
+                        #endregion
+
+                        token = new Token(tokenId, ((tokenId==13) ? _string : subword));
+                        _tokens.Add(token);
+                    }
+                    continue; // Tokens added, skip to next iteration to avoid err insertion in _token
+                }
+                
+                #region Check for Tokens that should be ignored or aggregated
                 switch (tokenId) {
                     case -1: case -2: // Comment or string.Empty occured 
                         continue;
-                    case 2: // Checks if a `ARTH OP`, since enums cannot take multi-values 
-                        tokenId = 11; break;
-                    case 3: // Checks if a `REAL`, since enums cannot take multi-values 
-                        tokenId = 8; break;
-                    case 5: case 9: // Checks if a `REL OP`, since enums cannot take multi-values 
-                        tokenId = 10; break;
                     case 13: // Checks for string and aggregates it  
                         _string += word.Replace('"', '\0')+' ';
                         if (_isText) continue;
