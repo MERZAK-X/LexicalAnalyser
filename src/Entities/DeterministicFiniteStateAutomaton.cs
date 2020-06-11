@@ -18,7 +18,7 @@ namespace LexicalAnalyzer.Entities
         private readonly string _alphabet, _name;
         private readonly string[] _operators, _commentDelimiter;
         private string _string = string.Empty; 
-        private bool _isText = false, _comment = false; // Checks whether the input is a string / comment
+        private bool _isText, _comment; // Checks whether the input is a string / comment
         private TransitionsMap _transitions = new TransitionsMap();
         private TokensList _tokens = new TokensList();
 
@@ -79,7 +79,7 @@ namespace LexicalAnalyzer.Entities
                 _states.AddIfNotExists(state);
                 _states.AddIfNotExists(nextState);
                 try { _transitions.AddIfNotExists(new Transition(state, symbol, nextState)); }
-                catch (Exception) { continue; }
+                catch (Exception) { /* continue; */ }
             }
 
             #endregion
@@ -99,13 +99,13 @@ namespace LexicalAnalyzer.Entities
             #region Variables
             char[] separators = {' ', '\n', '\t', ';'};
             var words = sourceCode.Split(separators);
-            Token token; var tokenId = 0;
+            Token token;
             _tokens?.Clear(); // Clear old results if any
             #endregion
             
             foreach (var word in words)
             {
-                tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
+                var tokenId = Accepts(word);
 
                 #region Check if rejected word contains OPERATORS
 
@@ -157,7 +157,7 @@ namespace LexicalAnalyzer.Entities
             
             Console.WriteLine($@"{_tokens}");
             
-            return _tokens.Accepted();
+            return _tokens?.Accepted() ?? false; // Avoid NullReferenceException
         }
 
         private int Accepts(string word)
