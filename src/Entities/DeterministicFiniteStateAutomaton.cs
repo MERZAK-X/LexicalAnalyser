@@ -16,7 +16,7 @@ namespace LexicalAnalyzer.Entities
         private List<int> _states = new List<int>();
         private List<string> _keywords;
         private readonly string _alphabet, _name;
-        private readonly string[] _commentDelimiter;
+        private readonly string[] _operators, _commentDelimiter;
         private string _string = string.Empty; 
         private bool _isText = false, _comment = false; // Checks whether the input is a string / comment
         private TransitionsMap _transitions = new TransitionsMap();
@@ -35,37 +35,42 @@ namespace LexicalAnalyzer.Entities
         private DFSA(string filename)
         {
             var lines = File.ReadAllLines(filename);
+            var l = 0;
 
             #region Automaton info
             _name = Path.GetFileNameWithoutExtension(filename);
-            _statesNumber = int.Parse(lines[0]); // Number of states
+            _statesNumber = int.Parse(lines[l]); // Number of states
             #endregion
 
             #region Alphabet
-            _alphabet = lines[1];
+            _alphabet = lines[++l];
             #endregion
 
             #region Start State
-            _startState = int.Parse(lines[2]); // Get states from file
+            _startState = int.Parse(lines[++l]); // Get states from file
             #endregion
 
             #region Final States
-            var finalStatesAsString = lines[3].Split(' ');
+            var finalStatesAsString = lines[++l].Split(' ');
             _finalStates = Array.ConvertAll(finalStatesAsString, int.Parse);
             #endregion
 
+            #region Operators
+            _operators = lines[++l].Split(' ').ToArray();
+            #endregion
+
             #region Keywords
-            _keywords = lines[4].Split(' ').ToList();
+            _keywords = lines[++l].Split(' ').ToList();
             _keywords = _keywords.ConvertAll(keyword => keyword.ToLower());
             #endregion
 
             #region Comment Delimiter
-            _commentDelimiter = lines[5].Split(' ').ToArray();
+            _commentDelimiter = lines[++l].Split(' ').ToArray();
             #endregion
 
             #region Tansitions
 
-            for (var i = 6; i <= lines.Length - 1; i++)
+            for (var i = ++l; i <= lines.Length - 1; i++)
             {
                 if(lines[i].StartsWith('#')) continue; // Adds #3
                 var state = int.Parse(lines[i].Split(' ')[0]);
@@ -92,7 +97,7 @@ namespace LexicalAnalyzer.Entities
         public bool Analyse(string sourceCode)
         {
             #region Variables
-            char[] separators = {' ', '\n', '\t', ';'}; string[] operators = {"+","-","/","*","<",">","=","<=",">=","<>"};
+            char[] separators = {' ', '\n', '\t', ';'};
             var words = sourceCode.Split(separators);
             Token token; var tokenId = 0;
             _tokens?.Clear(); // Clear old results if any
@@ -102,10 +107,12 @@ namespace LexicalAnalyzer.Entities
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
 
-                if (tokenId == 0 && word.Contains(operators))
+                #region Check if rejected word contains OPERATORS
+
+                if (tokenId == 0 && word.Contains(_operators))
                 {
-                    //var _operators = operators.Where(op => word.Contains(op)); // Return the detected OPs 
-                    
+                    #region Split Tokens using Automaton's Token Spliter
+
                     foreach (var subword in SplitToken(word))
                     {
                         tokenId = Accepts(subword);
@@ -125,8 +132,12 @@ namespace LexicalAnalyzer.Entities
                         token = new Token(tokenId, ((tokenId==13) ? _string : subword));
                         _tokens.Add(token);
                     }
+
+                    #endregion
                     continue; // Tokens added, skip to next iteration to avoid err insertion in _token
                 }
+
+                #endregion
                 
                 #region Check for Tokens that should be ignored or aggregated
                 switch (tokenId) {
