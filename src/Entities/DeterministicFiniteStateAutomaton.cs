@@ -102,10 +102,11 @@ namespace LexicalAnalyzer.Entities
             {
                 tokenId = Accepts(word); // Get the final state; 0 = none = word not accepted
 
-                var _operator = operators.Where(op => word.Contains(op))?.FirstOrDefault();
-                if (tokenId == 0 && word.Contains(_operator)) //operators.Any(op => word.Contains(op))
+                if (tokenId == 0 && word.Contains(operators))
                 {
-                    foreach (var subword in word.SplitKeep(_operator))
+                    //var _operators = operators.Where(op => word.Contains(op)); // Return the detected OPs 
+                    
+                    foreach (var subword in SplitToken(word))
                     {
                         tokenId = Accepts(subword);
                 
@@ -201,7 +202,7 @@ namespace LexicalAnalyzer.Entities
             #region Calculate the Final State
 
             foreach (var letter in letters)
-                try{ state = _transitions[state, letter]; /*Console.WriteLine(letter); /* Uncomment for debug */} 
+                try{ state = _transitions[state, letter]; /* σ(state, letter) returns next state */} 
                 catch (NullReferenceException) { return 0; }
                 catch (Exception) { return 0; }
 
@@ -220,6 +221,36 @@ namespace LexicalAnalyzer.Entities
                     catch (Exception) { return false; }
 
             return ((IList) _finalStates).Contains(state); // Returns whether a word is accepted by the automaton or not
+        }
+
+        public IEnumerable<string> SplitToken(string word)
+        {
+            #region Variables
+            var state = _startState; var invalidStates = new[]{0, 13, 14};
+            var subwords = new List<string>(); var subword = string.Empty;
+            #endregion
+
+            #region Split Tokens depending on their final states
+            for (var index = 0; index < word.Length; index++)
+            {
+                #region Check for valid σ(state, letter) Transition, if not found add current subword & restart OP on current symbol
+                try {
+                    state = _transitions[state, char.ToLower(word[index])]; // σ(state, letter) obviously
+                } catch (Exception) {
+                    state = 0; index--; // Restart operating from the current char
+                    subwords.Add(subword); // Add the saved subword to the list
+                    subword = string.Empty; // Clear the subword builder for next use
+                    continue; // Get back to last char as start of word 
+                }
+                #endregion
+                // If has a next state, add current letter to subword
+                if (!invalidStates.Contains(state)) subword += word[index]; 
+                // Reached the end of the word array add last left letters
+                if(index == word.Length-1) subwords.Add(subword); 
+            }
+            #endregion
+
+            return subwords.ToArray();
         }
         
         public override string ToString()
