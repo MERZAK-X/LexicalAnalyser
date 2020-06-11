@@ -27,7 +27,7 @@ namespace LexicalAnalyzer.Entities
 
         public override string ToString()
         {
-            return $@"{((_accepted) ? '\u2713' : '\u2717')} <{(_value)}{((_accepted) ? ","+_tokenId : string.Empty )}>";
+            return $@"{((_accepted) ? '\u2713' : '\u2717')} <{((_accepted) ? _tokenId+"," : string.Empty )}{(_value)}>";
         }
 
         public bool Accepted() => _accepted;  // same as => (_tokenId != 0) but without recalculating
