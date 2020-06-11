@@ -1,9 +1,12 @@
 (* test comment *)
 BEGIN
-var = "some quite long string";
+var = "some quite long string with ¢ħæræŧ€rß +°c §.-?";
 IF 13.4 >= 77
 THEN
     variable = 99 - 98;
 ELSE
     var = 17.54E^485512
+    1-2;9=8;8/9;
+    var*-1<=77/18;
+    test=99+98+1;
 END

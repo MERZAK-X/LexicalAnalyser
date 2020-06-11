@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using LexicalAnalyzer.Entities;
 
 namespace LexicalAnalyzer.Utils
@@ -36,13 +37,13 @@ namespace LexicalAnalyzer.Utils
             #endregion
             return (TokenType) tokenId;
         }
+
+        public static bool Contains(this string @string, IEnumerable<string> predicates) => predicates.Any(@string.Contains); // Check whether a string contains any of the elements in the list
         
         public static IEnumerable<string> SplitKeep(this string word, string separator)
         {
-            var index = word.IndexOf(separator, StringComparison.Ordinal);
             // Separate the OP from ID/NUMBER using ' '
             word = string.Concat(word.Select(c => c == separator[0] ? $" {separator} " : c.ToString())).TrimStart(' ');
-            //word = word.Insert(index + separator.Length," "); word = word.Insert(index, " ");
             // Return each subword / OP
             foreach (var subword in word.Split(' '))
                 yield return subword;
