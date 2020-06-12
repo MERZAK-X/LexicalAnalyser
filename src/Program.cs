@@ -11,7 +11,7 @@ namespace LexicalAnalyzer
         private const string Help = 
 @"LexicalAnalyser: https://github.com/MERZAK-X/LexicalAnalyser
 
-Usage: donet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [--help]
+Usage: dotnet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [--help]
 
     Arguments:
         Automaton       Path to the Automaton's file
@@ -20,7 +20,7 @@ Usage: donet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [--help]
         --help          Display this help and exit
         
 Examples:
-    donet LexicalAnalyser.dll SimpleLanguageAutomaton.test SourceCode.test
+    dotnet LexicalAnalyser.dll SimpleLanguageAutomaton.test SourceCode.test
     LexicalAnalyser.exe lib/examples/SimpleLanguageAutomaton.test lib/examples/SourceCode.test
 
 Copyright (C) 2020 ""NUL-X""";
