@@ -213,10 +213,10 @@ namespace LexicalAnalyzer.Entities
             #region Calculate the Final State
 
             foreach (var letter in letters)
-                try{ state = _transitions[state, letter]; /* σ(state, letter) returns next state */} 
-                catch (NullReferenceException) { return 0; }
-                catch (Exception) { return 0; }
-
+            {
+                state = _transitions[state, letter]; /* σ(state, letter) returns next state */
+                if (state == -1) return 0;
+            }
             #endregion
 
             return ((IList) _finalStates).Contains(state) ? state : 0; // Return the final state instead of a bool ; 0 = no states found
@@ -228,8 +228,10 @@ namespace LexicalAnalyzer.Entities
             var state = _startState;
 
             foreach (var letter in letters)
-                try{ state = _transitions[state, char.ToLower(letter)]; } 
-                    catch (Exception) { return false; }
+            {
+                state = _transitions[state, letter]; /* σ(state, letter) returns next state */
+                if (state == -1) return false;
+            }
 
             return ((IList) _finalStates).Contains(state); // Returns whether a word is accepted by the automaton or not
         }
@@ -245,10 +247,10 @@ namespace LexicalAnalyzer.Entities
             for (var index = 0; index < word.Length; index++)
             {
                 #region Check for valid σ(state, letter) Transition, if not found add current subword & restart OP on current symbol
-                try {
-                    state = _transitions[state, char.ToLower(word[index])]; // σ(state, letter) obviously
-                } catch (Exception) {
-                    state = 0; index--; // Restart operating from the current char
+                state = _transitions[state, char.ToLower(word[index])]; // σ(state, letter) obviously
+                if(state == -1) {
+                    state = 0;
+                    index--; // Restart operating from the current char
                     subwords.Add(subword); // Add the saved subword to the list
                     subword = string.Empty; // Clear the subword builder for next use
                     continue; // Get back to last char as start of word 
