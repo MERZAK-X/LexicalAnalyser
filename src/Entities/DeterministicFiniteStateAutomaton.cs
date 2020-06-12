@@ -312,7 +312,7 @@ namespace LexicalAnalyzer.Entities
             automaton += "\nF = {";
             automaton = _finalStates.Aggregate(automaton, (current, finalState) => current + ((finalState == _finalStates.Last()) ? $"{finalState}" : $"{finalState}, "));
 
-            automaton += "}\n";
+            automaton += "} ;\n";
             return automaton;
 
             #endregion
