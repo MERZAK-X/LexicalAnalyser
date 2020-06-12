@@ -5,8 +5,8 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>LexicalAnalyzer</RootNamespace>
         <Company>NUL-X</Company>
-        <AssemblyVersion>1.1</AssemblyVersion>
-        <FileVersion>1.1</FileVersion>
+        <AssemblyVersion>1.2</AssemblyVersion>
+        <FileVersion>1.2</FileVersion>
     </PropertyGroup>
 
 </Project>

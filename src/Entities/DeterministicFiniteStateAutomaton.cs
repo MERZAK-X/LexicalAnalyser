@@ -276,7 +276,7 @@ namespace LexicalAnalyzer.Entities
 
             #region States {E}
 
-            automaton += "E = {";
+            automaton += "\n\nE = {";
             for (var i = 0; i < _states.Count; i++)
             {
                 automaton += _states[i];
@@ -284,35 +284,35 @@ namespace LexicalAnalyzer.Entities
                 automaton += (i != _states.Count - 1) ? ", " : string.Empty;
             }
 
-            automaton += "} ; ";
+            automaton += "} ; \n";
 
             #endregion
 
             #region Alphabet {A}
 
-            automaton += "A = {";
+            automaton += "\nA = {";
             automaton = _alphabet.Aggregate(automaton, (current, c) => current + ((c == _alphabet.Last()) ? $"{c}" : $"{c}, "));
 
             #endregion
 
             #region Transitions {σ}
 
-            automaton += $"}} ; Transitions: {{{_transitions}}}";
+            automaton += $"}} ; \n\nTransitions: {{{_transitions}\n}}";
 
             #endregion
 
             #region Initial States {q₀}
 
-            automaton += $" ; q₀ = {_startState} ; ";
+            automaton += $" ; \n\nq₀ = {_startState} ; \n";
 
             #endregion
 
             #region Final States {F}
             
-            automaton += "F = {";
+            automaton += "\nF = {";
             automaton = _finalStates.Aggregate(automaton, (current, finalState) => current + ((finalState == _finalStates.Last()) ? $"{finalState}" : $"{finalState}, "));
 
-            automaton += "}\n";
+            automaton += "} ;\n";
             return automaton;
 
             #endregion
