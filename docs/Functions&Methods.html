@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+
+
+    <meta name="viewport" content="width=device-width">
+
+    <title>LexicalAnalyser Docs : Functions & Methods</title>
+    <meta name="description" content="Lexical Analyser is a program that determines whether a source code is accepted by a given DFSA. - MERZAK-X/LexicalAnalyser">
+    
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+
+    <link rel="assets" href="https://github.githubassets.com/">
+
+
+    <link crossorigin="anonymous" media="all" integrity="sha512-NC0d+qVeTgvgc3XpqnmqrmnpQnjdeOmUq0XiH+8aCQipkK2dTy+BLVTNHCRJtcZxZCDUd7gBO8ccGLa7nVTYTw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-342d1dfaa55e4e0be07375e9aa79aaae.css">
+    <link crossorigin="anonymous" media="all" integrity="sha512-xnQIMZDOHZTyEPkXHdiwqBPPUAyzDzAU5iDJa6OfzDqwhJdI+0IyBajpzgDAKoegEWUXs4Ze9+/jGhP/OMD98w==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-c674083190ce1d94f210f9171dd8b0a8.css">
+
+
+    <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon-dark.png">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon-dark.svg">
+
+    <meta name="theme-color" content="#1e2327">
+
+</head>
+<body>
+<div class="container-lg clearfix new-discussion-timeline  p-responsive">
+    <div class="repository-content ">
+
+
+
+        <div id="wiki-wrapper" class="page">
+
+
+
+
+            <div id="wiki-content" class="mt-4">
+                <div class="gutter-condensed gutter-lg d-flex flex-column flex-md-row" style="display: flex;justify-content: space-around;align-items: flex-start;overflow: visible;">
+
+
+                    <div class="flex-shrink-0 col-12 col-md-3" style="float: left; position: sticky; top: 20px;">
+                        <div class="wiki-rightbar">
+
+
+                            <div class="gollum-markdown-content">
+                                <div class="Box Box--condensed mb-4">
+                                    <div class="Box-body wiki-custom-sidebar markdown-body wiki-writable">
+
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                                <ul>
+                                                    <li><a href="index.html#usage">Usage</a></li>
+                                                    <li><a href="index.html#developers">Developers</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="DFSA.html">DFSA</a>
+                                                <ul>
+                                                    <li><a href="DFSA.html#automaton">Automaton</a></li>
+                                                    <li>
+                                                        <a href="DFSA.html#automatons-file-format">Automaton's file format</a>
+                                                        <ul>
+                                                            <li><a href="DFSA.html#template-">Template</a></li>
+                                                            <li><a href="DFSA.html#examples-">Examples</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="Functions&Methods.html">Functions &amp; Methods</a>
+                                                <ul>
+                                                    <li><a href="Functions&Methods.html#deterministic-finite-state-automaton">Deterministic Finite State Automaton</a></li>
+                                                    <li><a href="Functions&Methods.html#transition">Transition</a></li>
+                                                    <li><a href="Functions&Methods.html#transitions-map--listtransition">Transitions Map</a></li>
+                                                    <li><a href="Functions&Methods.html#token">Token</a></li>
+                                                    <li><a href="Functions&Methods.html#tokens-list--listtoken">Tokens List</a></li>
+                                                    <li>
+                                                        <a href="Functions&Methods.html#extentions">Extentions</a>
+                                                        <ul>
+                                                            <li><a href="Functions&Methods.html#transitions-map">Transitions Map</a></li>
+                                                            <li><a href="Functions&Methods.html#token-type---enum">Token Type</a></li>
+                                                            <li><a href="Functions&Methods.html#list">List</a></li>
+                                                            <li><a href="Functions&Methods.html#string">String</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0">
+                        <div id="wiki-body" class="gollum-markdown-content">
+                            <div class="markdown-body">
+                                <h2 id="deterministic-finite-state-automaton">
+                                    <a id="user-content-deterministic-finite-state-automaton" class="anchor" href="#deterministic-finite-state-automaton" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Deterministic Finite State Automaton</h2>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-en">DFSA</span> <span class="pl-en">CreateInstance</span>(<span class="pl-k">string</span> <span class="pl-smi">filename</span>) </pre></div>
+                                <ul>
+                                    <li>Creates a new Deterministic Finite State Automaton and returns it.
+                                        <ul>
+                                            <li>
+                                                <code>filename</code> full path to the automaton's definition file.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">private</span> <span class="pl-en">DFSA</span>(<span class="pl-k">string</span> <span class="pl-smi">filename</span>) </pre></div>
+                                <ul>
+                                    <li>Deterministic Finite State Automaton private constructor.
+                                        <ul>
+                                            <li>
+                                                <code>filename</code> full path to the automaton's definition file.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">Print</span>() </pre></div>
+                                <blockquote>
+                                    <p>Displays all the Automaton's info to the <code>STDOUT</code>.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Calls <code>ToString</code> method in a <code>Console.WriteLine</code> statement.</li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">bool</span> <span class="pl-en">Analyse</span>(<span class="pl-k">string</span> <span class="pl-smi">sourceCode</span>) </pre></div>
+                                <blockquote>
+                                    <p>Analyses a source code while displaying its <code>Lexemes (Lexical Units)</code> &amp; <code>Tokens</code> one-by-one and each whether it is accepted or not.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>bool</code> indicating whether a <code>sourcecode : String</code> is accepted by the automaton's defined language.
+                                        <ul>
+                                            <li>
+                                                <code>sourceCode</code> the source code the be analysed.</li>
+                                        </ul>
+                                    </li>
+                                    <li>Calls <code>Accepts</code> &amp; <code>SplitToken</code> methods.</li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">private</span> <span class="pl-k">int</span> <span class="pl-en">Accepts</span>(<span class="pl-k">string</span> <span class="pl-smi">word</span>)</pre></div>
+                                <blockquote>
+                                    <p>Examines a Lexeme's symbols transitions and returns the final state occurred, <code>0</code> if none (lexeme not accepted by the automaton's described language).</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>int</code> final state of the given word, <code>0</code> if none.
+                                        <ul>
+                                            <li>
+                                                <code>word</code> lexeme or lexical unit.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">private</span> <span class="pl-k">bool</span> <span class="pl-en">Accept</span>(<span class="pl-k">string</span> <span class="pl-smi">word</span>)</pre></div>
+                                <blockquote>
+                                    <p>Examines a Lexeme's symbols transitions and returns <code>true</code> if the Lexical Unit has a valid <code>endState</code>, otherwise returns <code>false</code>.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>bool</code> indicating whether the given word is accepted by the automaton's described language or not.
+                                        <ul>
+                                            <li>
+                                                <code>word</code> lexeme or lexical unit.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-en">IEnumerable</span>&lt;<span class="pl-k">string</span>&gt; <span class="pl-en">SplitToken</span>(<span class="pl-k">string</span> <span class="pl-smi">word</span>)</pre></div>
+                                <blockquote>
+                                    <p>Splits a Lexical Unit or Lexeme to Lexemes if they contain OPERATORS. (call in <code>Analyse</code> <code>if (tokenId == 0 &amp;&amp; word.Contains(_operators))</code>).</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>IEnumerable&lt;string&gt;</code> that can be looped thru.
+                                        <ul>
+                                            <li>
+                                                <code>word</code> lexeme or lexical unit.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">override</span> <span class="pl-k">string</span> <span class="pl-en">ToString</span>() </pre></div>
+                                <blockquote>
+                                    <p>Returns all the Automaton's info as <code>String</code>.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>string</code> representation of Automaton.</li>
+                                </ul>
+                                <br>
+                                <hr>
+                                <br>
+                                <h2 id="transition">
+                                    <a id="user-content-transition" class="anchor" href="#transition" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Transition</h2>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-en">Transition</span>(<span class="pl-k">int</span> <span class="pl-smi">startState</span>, <span class="pl-k">char</span> <span class="pl-smi">symbol</span>, <span class="pl-k">int</span> <span class="pl-smi">endState</span>) </pre></div>
+                                <blockquote>
+                                    <p>Transition public constructor.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">override</span> <span class="pl-k">string</span> <span class="pl-en">ToString</span>() </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>string</code> representation of Transition.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">bool</span> <span class="pl-en">Equals</span>(<span class="pl-en">Transition</span> <span class="pl-smi">other</span>) </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether <code>this</code> &amp; <code>other</code> Transitions are equal.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-smi">int</span> σ(<span class="pl-smi">int</span><span class="pl-k">?</span> <span class="pl-smi">startState</span>, <span class="pl-smi">char</span><span class="pl-k">?</span> <span class="pl-smi">symbol</span>) </pre></div>
+                                <blockquote>
+                                    <p>The Transition function.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>int</code> <code>nextstate</code>, <code>-1</code> if no next state was found.</li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-smi">bool</span> <span class="pl-k">is</span>Σ(<span class="pl-smi">int</span><span class="pl-k">?</span> <span class="pl-smi">startState</span>, <span class="pl-smi">char</span><span class="pl-k">?</span> <span class="pl-smi">symbol</span>) </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether the current Transition is the one the being looked for. (call in <code>TransitionsMap [] operator</code>)</p>
+                                </blockquote>
+                                <br>
+                                <hr>
+                                <br>
+                                <h2 id="transitions-map--listtransition">
+                                    <a id="user-content-transitions-map--listtransition" class="anchor" href="#transitions-map--listtransition" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Transitions Map : <code>List&lt;Transition&gt;</code>
+                                </h2>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-smi">int</span> <span class="pl-k">this</span>[<span class="pl-en">int</span> <span class="pl-en">i</span>, <span class="pl-en">char</span> <span class="pl-en">c</span>] </pre></div>
+                                <blockquote>
+                                    <p>The Transition function, returns the next or final state from the given <code>i</code> state and <code>c</code> symbol, <code>-1</code> if no match is found.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Returns <code>int</code> <code>nextstate</code>, <code>-1</code> if no next state was found.</li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">override</span> <span class="pl-k">string</span> <span class="pl-en">ToString</span>() </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>string</code> representation of TransitionsMap (All its Transitions).</p>
+                                </blockquote>
+                                <br>
+                                <hr>
+                                <br>
+                                <h2 id="token">
+                                    <a id="user-content-token" class="anchor" href="#token" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Token</h2>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-en">Token</span>(<span class="pl-k">int</span> <span class="pl-smi">tokenId</span>, <span class="pl-k">string</span> <span class="pl-smi">value</span>) </pre></div>
+                                <blockquote>
+                                    <p>Token public constructor.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>Checks for Tokens that could not be described in TokenTypes Enum.</li>
+                                    <li>Checks if the token has an accepted <code>final state != 0</code>.</li>
+                                </ul>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">bool</span> <span class="pl-en">Accepted</span>()</pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether the Token is accepted or not, based on the calculation in the constructor.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">override</span> <span class="pl-k">string</span> <span class="pl-en">ToString</span>() </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>string</code> representation of Token.</p>
+                                </blockquote>
+                                <br>
+                                <hr>
+                                <br>
+                                <h2 id="tokens-list--listtoken">
+                                    <a id="user-content-tokens-list--listtoken" class="anchor" href="#tokens-list--listtoken" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Tokens List : <code>List&lt;Token&gt;</code>
+                                </h2>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">bool</span> <span class="pl-en">Accepted</span>()</pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether all the <code>Tokens</code> in the <code>TokensList</code> are accepted or not.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">override</span> <span class="pl-k">string</span> <span class="pl-en">ToString</span>() </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>string</code> representation of TokensList (All its Tokens).</p>
+                                </blockquote>
+                                <br>
+                                <hr>
+                                <br>
+                                <h2 id="extentions">
+                                    <a id="user-content-extentions" class="anchor" href="#extentions" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extentions</h2>
+                                <h3 id="transitions-map">
+                                    <a id="user-content-transitions-map" class="anchor" href="#transitions-map" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Transitions Map</h3>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">AddIfNotExists</span>(<span class="pl-k">this</span> <span class="pl-en">TransitionsMap</span> <span class="pl-smi">transitionsMap</span>, <span class="pl-en">Transition</span> <span class="pl-smi">transition</span>) </pre></div>
+                                <blockquote>
+                                    <p>Adds a new Transition to the TransitionsMap if it doesn't already exist.</p>
+                                </blockquote>
+                                <br>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">bool</span> <span class="pl-en">Has</span>(<span class="pl-k">this</span> <span class="pl-en">TransitionsMap</span> <span class="pl-smi">transitionsMap</span>, <span class="pl-en">Transition</span> <span class="pl-smi">transition</span>) </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether a given <code>Transition</code> exists in the <code>TransitionsMap</code> or not.</p>
+                                </blockquote>
+                                <br>
+                                <br>
+                                <h3 id="token-type---enum">
+                                    <a id="user-content-token-type---enum" class="anchor" href="#token-type---enum" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Token Type  : <code>enum</code>
+                                </h3>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-en">TokenType</span> <span class="pl-en">GetToken</span>(<span class="pl-k">this</span> <span class="pl-en">TokenType</span> <span class="pl-smi">tokenType</span>, <span class="pl-k">int</span> <span class="pl-smi">tokenId</span>) </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>TokenType</code> from a given <code>tokenId : int</code>.</p>
+                                </blockquote>
+                                <br>
+                                <br>
+                                <h3 id="list">
+                                    <a id="user-content-list" class="anchor" href="#list" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>List</h3>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">AddIfNotExists</span>&lt;<span class="pl-en">T</span>&gt;(<span class="pl-k">this</span> <span class="pl-en">List</span>&lt;<span class="pl-en">T</span>&gt; <span class="pl-smi">list</span>, <span class="pl-en">T</span> <span class="pl-smi">item</span>) </pre></div>
+                                <blockquote>
+                                    <p>Adds a new <code>item : T</code> to the List if it doesn't already exist.</p>
+                                </blockquote>
+                                <br>
+                                <br>
+                                <h3 id="string">
+                                    <a id="user-content-string" class="anchor" href="#string" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>String</h3>
+                                <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">bool</span> <span class="pl-en">Contains</span>(<span class="pl-k">this</span> <span class="pl-k">string</span> <span class="pl-smi">@string</span>, <span class="pl-en">IEnumerable</span>&lt;<span class="pl-k">string</span>&gt; <span class="pl-smi">predicates</span>) </pre></div>
+                                <blockquote>
+                                    <p>Returns <code>bool</code> indicating whether a string contains any of the <code>predicates</code>.</p>
+                                </blockquote>
+                                <br>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

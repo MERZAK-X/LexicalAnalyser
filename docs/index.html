@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <meta name="viewport" content="width=device-width">
+
+    <title>LexicalAnalyser Docs</title>
+    <meta name="description" content="Lexical Analyser is a program that determines whether a source code is accepted by a given DFSA. - MERZAK-X/LexicalAnalyser">
+
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+
+    <link rel="assets" href="https://github.githubassets.com/">
+
+
+    <link crossorigin="anonymous" media="all" integrity="sha512-NC0d+qVeTgvgc3XpqnmqrmnpQnjdeOmUq0XiH+8aCQipkK2dTy+BLVTNHCRJtcZxZCDUd7gBO8ccGLa7nVTYTw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-342d1dfaa55e4e0be07375e9aa79aaae.css">
+    <link crossorigin="anonymous" media="all" integrity="sha512-xnQIMZDOHZTyEPkXHdiwqBPPUAyzDzAU5iDJa6OfzDqwhJdI+0IyBajpzgDAKoegEWUXs4Ze9+/jGhP/OMD98w==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-c674083190ce1d94f210f9171dd8b0a8.css">
+
+
+    <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon-dark.png">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon-dark.svg">
+
+    <meta name="theme-color" content="#1e2327">
+
+</head>
+<body>
+<div class="container-lg clearfix new-discussion-timeline  p-responsive">
+    <div class="repository-content ">
+
+
+
+        <div id="wiki-wrapper" class="page">
+
+            <div id="wiki-content" class="mt-4">
+                <div class="gutter-condensed gutter-lg d-flex flex-column flex-md-row" style="display: flex;justify-content: space-around;align-items: flex-start;overflow: visible;">
+
+
+                    <div class="flex-shrink-0 col-12 col-md-3" style="float: left; position: sticky; top: 20px;">
+                        <div class="wiki-rightbar">
+
+
+                            <div class="gollum-markdown-content">
+                                <div class="Box Box--condensed mb-4">
+                                    <div class="Box-body wiki-custom-sidebar markdown-body wiki-writable">
+
+                                        <ul>
+                                            <li>
+                                                <a href="index.html">Home</a>
+                                                <ul>
+                                                    <li><a href="index.html#usage">Usage</a></li>
+                                                    <li><a href="index.html#developers">Developers</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="DFSA.html">DFSA</a>
+                                                <ul>
+                                                    <li><a href="DFSA.html#automaton">Automaton</a></li>
+                                                    <li>
+                                                        <a href="DFSA.html#automatons-file-format">Automaton's file format</a>
+                                                        <ul>
+                                                            <li><a href="DFSA.html#template-">Template</a></li>
+                                                            <li><a href="DFSA.html#examples-">Examples</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="Functions&Methods.html">Functions &amp; Methods</a>
+                                                <ul>
+                                                    <li><a href="Functions&Methods.html#deterministic-finite-state-automaton">Deterministic Finite State Automaton</a></li>
+                                                    <li><a href="Functions&Methods.html#transition">Transition</a></li>
+                                                    <li><a href="Functions&Methods.html#transitions-map--listtransition">Transitions Map</a></li>
+                                                    <li><a href="Functions&Methods.html#token">Token</a></li>
+                                                    <li><a href="Functions&Methods.html#tokens-list--listtoken">Tokens List</a></li>
+                                                    <li>
+                                                        <a href="Functions&Methods.html#extentions">Extentions</a>
+                                                        <ul>
+                                                            <li><a href="Functions&Methods.html#transitions-map">Transitions Map</a></li>
+                                                            <li><a href="Functions&Methods.html#token-type---enum">Token Type</a></li>
+                                                            <li><a href="Functions&Methods.html#list">List</a></li>
+                                                            <li><a href="Functions&Methods.html#string">String</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0" style="float: left">
+                        <div id="wiki-body" class="gollum-markdown-content">
+                            <div class="markdown-body">
+                                <h1 id="lexicalanalyser">
+                                    <a id="user-content-lexicalanalyser" class="anchor" href="#lexicalanalyser" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>LexicalAnalyser</h1>
+                                <p><em>Lexical Analyser</em> is a program that determines whether a <code>source code</code> is accepted by a given <code>DFSA</code> <strong>Deterministic Finite State Automaton</strong>.</p>
+                                <table role="table">
+                                    <thead>
+                                    <tr>
+                                        <th align="left"><strong>Token</strong></th>
+                                        <th align="center"><strong>FinalState</strong></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td align="left">ID</td>
+                                        <td align="center">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">KEYWORD</td>
+                                        <td align="center">12</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">ARTH OP</td>
+                                        <td align="center">2, 11</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">REL OP</td>
+                                        <td align="center">5, 9, 10</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">STRING</td>
+                                        <td align="center">13</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">INT</td>
+                                        <td align="center">4</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">REAL</td>
+                                        <td align="center">3, 8</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">COMMENT</td>
+                                        <td align="center">14</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <h2 id="automtons-file-format">
+                                    <a id="user-content-automatons-file-format" class="anchor" href="#automatons-file-format" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Automaton's file format</h2>
+                                <h4 id="template-">
+                                    <a id="user-content-template-" class="anchor" href="#template-" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Template :</h4>
+                                <pre><code>Number of states
+Alphabets
+Initial State
+Final states separated by space
+Language operators separated by space
+Language keywords separated by space
+Transitions {StartState Symbol EndState} [From 8th line to the end of the file]
+Comments {# Comment} [Starting from line 8]
+</code></pre>
+                                <h4 id="example-">
+                                    <a id="user-content-example-" class="anchor" href="#example-" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Example :</h4>
+                                <ul>
+                                    <li>
+                                        <p><a href="https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SimpleLanguageAutomaton.test">Simple Language Automaton</a> : Automaton file example</p>
+                                    </li>
+                                    <li>
+                                        <p><a href="https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SourceCode.test">Source Code</a> : Simple source code file example, that's accepted by the automaton above</p>
+                                    </li>
+                                </ul>
+                                <h2 id="usage">
+                                    <a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usage</h2>
+                                <div class="highlight highlight-source-shell"><pre>merzak-x@PR3C1S10N:<span class="pl-k">~</span>$ dotnet LexicalAnalyzer.dll <span class="pl-s"><span class="pl-pds">"</span>/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SimpleLanguageAutomaton.test<span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span>/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SourceCode.test<span class="pl-pds">"</span></span>
+
+Automaton [SimpleLanguageAutomaton] <span class="pl-c1">:</span>
+
+E = {0, 1, 4, 2, 15, 3, 6, 7, 8, 5, 9, 10, 11} <span class="pl-k">;</span>
+
+A = {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, _, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, <span class="pl-k">&lt;</span>, <span class="pl-k">&gt;</span>, (, ), <span class="pl-s"><span class="pl-pds">"</span>, +, -, *, /, =} ; </span>
+<span class="pl-s"></span>
+<span class="pl-s">Transitions: {</span>
+<span class="pl-s">        σ(0, a) = 1</span>
+<span class="pl-s">        σ(0, b) = 1</span>
+<span class="pl-s">        σ(0, c) = 1</span>
+<span class="pl-s">        σ(0, d) = 1</span>
+<span class="pl-s">        σ(0, e) = 1</span>
+<span class="pl-s">        σ(0, f) = 1</span>
+<span class="pl-s">        σ(0, g) = 1</span>
+<span class="pl-s">        σ(0, h) = 1</span>
+<span class="pl-s">        σ(0, i) = 1</span>
+<span class="pl-s">        σ(0, j) = 1</span>
+<span class="pl-s">        σ(0, k) = 1</span>
+<span class="pl-s">        σ(0, l) = 1</span>
+<span class="pl-s">        σ(0, m) = 1</span>
+<span class="pl-s">        σ(0, n) = 1</span>
+<span class="pl-s">        σ(0, o) = 1</span>
+<span class="pl-s">        σ(0, p) = 1</span>
+<span class="pl-s">        σ(0, q) = 1</span>
+<span class="pl-s">        σ(0, r) = 1</span>
+<span class="pl-s">        σ(0, s) = 1</span>
+<span class="pl-s">        σ(0, t) = 1</span>
+<span class="pl-s">        σ(0, u) = 1</span>
+<span class="pl-s">        σ(0, v) = 1</span>
+<span class="pl-s">        σ(0, w) = 1</span>
+<span class="pl-s">        σ(0, x) = 1</span>
+<span class="pl-s">        σ(0, y) = 1</span>
+<span class="pl-s">        σ(0, z) = 1</span>
+<span class="pl-s">        σ(0, _) = 1</span>
+<span class="pl-s">        σ(1, 0) = 1</span>
+<span class="pl-s">        σ(1, 1) = 1</span>
+<span class="pl-s">        σ(1, 2) = 1</span>
+<span class="pl-s">        σ(1, 3) = 1</span>
+<span class="pl-s">        σ(1, 4) = 1</span>
+<span class="pl-s">        σ(1, 5) = 1</span>
+<span class="pl-s">        σ(1, 6) = 1</span>
+<span class="pl-s">        σ(1, 7) = 1</span>
+<span class="pl-s">        σ(1, 8) = 1</span>
+<span class="pl-s">        σ(1, 9) = 1</span>
+<span class="pl-s">        σ(1, a) = 1</span>
+<span class="pl-s">        σ(1, b) = 1</span>
+<span class="pl-s">        σ(1, c) = 1</span>
+<span class="pl-s">        σ(1, d) = 1</span>
+<span class="pl-s">        σ(1, e) = 1</span>
+<span class="pl-s">        σ(1, f) = 1</span>
+<span class="pl-s">        σ(1, g) = 1</span>
+<span class="pl-s">        σ(1, h) = 1</span>
+<span class="pl-s">        σ(1, i) = 1</span>
+<span class="pl-s">        σ(1, j) = 1</span>
+<span class="pl-s">        σ(1, k) = 1</span>
+<span class="pl-s">        σ(1, l) = 1</span>
+<span class="pl-s">        σ(1, m) = 1</span>
+<span class="pl-s">        σ(1, n) = 1</span>
+<span class="pl-s">        σ(1, o) = 1</span>
+<span class="pl-s">        σ(1, p) = 1</span>
+<span class="pl-s">        σ(1, q) = 1</span>
+<span class="pl-s">        σ(1, r) = 1</span>
+<span class="pl-s">        σ(1, s) = 1</span>
+<span class="pl-s">        σ(1, t) = 1</span>
+<span class="pl-s">        σ(1, u) = 1</span>
+<span class="pl-s">        σ(1, v) = 1</span>
+<span class="pl-s">        σ(1, w) = 1</span>
+<span class="pl-s">        σ(1, x) = 1</span>
+<span class="pl-s">        σ(1, y) = 1</span>
+<span class="pl-s">        σ(1, z) = 1</span>
+<span class="pl-s">        σ(1, _) = 1</span>
+<span class="pl-s">        σ(0, 0) = 4</span>
+<span class="pl-s">        σ(0, 1) = 4</span>
+<span class="pl-s">        σ(0, 2) = 4</span>
+<span class="pl-s">        σ(0, 3) = 4</span>
+<span class="pl-s">        σ(0, 4) = 4</span>
+<span class="pl-s">        σ(0, 5) = 4</span>
+<span class="pl-s">        σ(0, 6) = 4</span>
+<span class="pl-s">        σ(0, 7) = 4</span>
+<span class="pl-s">        σ(0, 8) = 4</span>
+<span class="pl-s">        σ(0, 9) = 4</span>
+<span class="pl-s">        σ(0, -) = 2</span>
+<span class="pl-s">        σ(2, 0) = 4</span>
+<span class="pl-s">        σ(2, 1) = 4</span>
+<span class="pl-s">        σ(2, 2) = 4</span>
+<span class="pl-s">        σ(2, 3) = 4</span>
+<span class="pl-s">        σ(2, 4) = 4</span>
+<span class="pl-s">        σ(2, 5) = 4</span>
+<span class="pl-s">        σ(2, 6) = 4</span>
+<span class="pl-s">        σ(2, 7) = 4</span>
+<span class="pl-s">        σ(2, 8) = 4</span>
+<span class="pl-s">        σ(2, 9) = 4</span>
+<span class="pl-s">        σ(4, 0) = 4</span>
+<span class="pl-s">        σ(4, 1) = 4</span>
+<span class="pl-s">        σ(4, 2) = 4</span>
+<span class="pl-s">        σ(4, 3) = 4</span>
+<span class="pl-s">        σ(4, 4) = 4</span>
+<span class="pl-s">        σ(4, 5) = 4</span>
+<span class="pl-s">        σ(4, 6) = 4</span>
+<span class="pl-s">        σ(4, 7) = 4</span>
+<span class="pl-s">        σ(4, 8) = 4</span>
+<span class="pl-s">        σ(4, 9) = 4</span>
+<span class="pl-s">        σ(4, .) = 15</span>
+<span class="pl-s">        σ(15, 0) = 3</span>
+<span class="pl-s">        σ(15, 1) = 3</span>
+<span class="pl-s">        σ(15, 2) = 3</span>
+<span class="pl-s">        σ(15, 3) = 3</span>
+<span class="pl-s">        σ(15, 4) = 3</span>
+<span class="pl-s">        σ(15, 5) = 3</span>
+<span class="pl-s">        σ(15, 6) = 3</span>
+<span class="pl-s">        σ(15, 7) = 3</span>
+<span class="pl-s">        σ(15, 8) = 3</span>
+<span class="pl-s">        σ(15, 9) = 3</span>
+<span class="pl-s">        σ(3, 0) = 3</span>
+<span class="pl-s">        σ(3, 1) = 3</span>
+<span class="pl-s">        σ(3, 2) = 3</span>
+<span class="pl-s">        σ(3, 3) = 3</span>
+<span class="pl-s">        σ(3, 4) = 3</span>
+<span class="pl-s">        σ(3, 5) = 3</span>
+<span class="pl-s">        σ(3, 6) = 3</span>
+<span class="pl-s">        σ(3, 7) = 3</span>
+<span class="pl-s">        σ(3, 8) = 3</span>
+<span class="pl-s">        σ(3, 9) = 3</span>
+<span class="pl-s">        σ(3, e) = 6</span>
+<span class="pl-s">        σ(6, ^) = 7</span>
+<span class="pl-s">        σ(7, 0) = 8</span>
+<span class="pl-s">        σ(7, 1) = 8</span>
+<span class="pl-s">        σ(7, 2) = 8</span>
+<span class="pl-s">        σ(7, 3) = 8</span>
+<span class="pl-s">        σ(7, 4) = 8</span>
+<span class="pl-s">        σ(7, 5) = 8</span>
+<span class="pl-s">        σ(7, 6) = 8</span>
+<span class="pl-s">        σ(7, 7) = 8</span>
+<span class="pl-s">        σ(7, 8) = 8</span>
+<span class="pl-s">        σ(7, 9) = 8</span>
+<span class="pl-s">        σ(8, 0) = 8</span>
+<span class="pl-s">        σ(8, 1) = 8</span>
+<span class="pl-s">        σ(8, 2) = 8</span>
+<span class="pl-s">        σ(8, 3) = 8</span>
+<span class="pl-s">        σ(8, 4) = 8</span>
+<span class="pl-s">        σ(8, 5) = 8</span>
+<span class="pl-s">        σ(8, 6) = 8</span>
+<span class="pl-s">        σ(8, 7) = 8</span>
+<span class="pl-s">        σ(8, 8) = 8</span>
+<span class="pl-s">        σ(8, 9) = 8</span>
+<span class="pl-s">        σ(0, =) = 5</span>
+<span class="pl-s">        σ(0, &lt;) = 9</span>
+<span class="pl-s">        σ(0, &gt;) = 10</span>
+<span class="pl-s">        σ(9, =) = 5</span>
+<span class="pl-s">        σ(9, &gt;) = 5</span>
+<span class="pl-s">        σ(10, =) = 5</span>
+<span class="pl-s">        σ(0, +) = 11</span>
+<span class="pl-s">        σ(0, *) = 11</span>
+<span class="pl-s">        σ(0, /) = 11</span>
+<span class="pl-s">} ; </span>
+<span class="pl-s"></span>
+<span class="pl-s">q₀ = 0 ; </span>
+<span class="pl-s"></span>
+<span class="pl-s">F = {1, 2, 3, 4, 5, 8, 9, 10, 11} ;</span>
+<span class="pl-s"></span>
+<span class="pl-s"></span>
+<span class="pl-s">✓ &lt;KEYWORD,{BEGIN}&gt;</span>
+<span class="pl-s">✓ &lt;ID,{var}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{=}&gt;</span>
+<span class="pl-s">✓ &lt;STRING,{some quite long string with ¢ħæræŧ€rß +°c §.-?}&gt;</span>
+<span class="pl-s">✓ &lt;KEYWORD,{IF}&gt;</span>
+<span class="pl-s">✓ &lt;REAL,{13.4}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{&gt;=}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{77}&gt;</span>
+<span class="pl-s">✓ &lt;KEYWORD,{THEN}&gt;</span>
+<span class="pl-s">✓ &lt;ID,{variable}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{=}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{99}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{-}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{98}&gt;</span>
+<span class="pl-s">✓ &lt;KEYWORD,{ELSE}&gt;</span>
+<span class="pl-s">✓ &lt;ID,{var}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{=}&gt;</span>
+<span class="pl-s">✓ &lt;REAL,{17.54E^485512}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{1}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{-2}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{9}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{=}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{8}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{8}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{/}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{9}&gt;</span>
+<span class="pl-s">✓ &lt;ID,{var}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{*}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{-1}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{&lt;=}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{77}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{/}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{18}&gt;</span>
+<span class="pl-s">✓ &lt;ID,{test}&gt;</span>
+<span class="pl-s">✓ &lt;REL_OP,{=}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{99}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{+}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{98}&gt;</span>
+<span class="pl-s">✓ &lt;ARTH_OP,{+}&gt;</span>
+<span class="pl-s">✓ &lt;INT,{1}&gt;</span>
+<span class="pl-s">✓ &lt;KEYWORD,{END}&gt;</span>
+<span class="pl-s"></span>
+<span class="pl-s">✓ The source file <span class="pl-s"><span class="pl-pds">`</span>SourceCode.test<span class="pl-pds">`</span></span> is accepted by the automaton's described language !</span>
+<span class="pl-s"></span>
+<span class="pl-s"></span>
+<span class="pl-s">Process finished with exit code 0.</span>
+<span class="pl-s"></span></pre></div>
+                                <pre><code>Usage: dotnet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [--help]
+
+    Arguments:
+        Automaton       Path to the Automaton's file
+        Source          Path to the source code file to be analysed
+    Options:
+        --help          Display this help and exit
+
+Examples:
+    dotnet LexicalAnalyser.dll SimpleLanguageAutomaton.test SourceCode.test
+    LexicalAnalyser.exe lib/examples/SimpleLanguageAutomaton.test lib/examples/SourceCode.test
+
+Copyright (C) 2020 "NUL-X"
+
+</code></pre>
+                                <h4 id="developers">
+                                    <a id="user-content-developers" class="anchor" href="#developers" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Developers</h4>
+                                <p><a href="https://github.com/MERZAK-X"><img src="https://camo.githubusercontent.com/2990a42d9c6084553b55f5ee866a4033d214caf8/68747470733a2f2f62616467656e2e6e65742f62616467652f446576656c6f7065722f4d45525a414b2d582f626c61636b3f69636f6e3d676974687562" alt="MERZAK-X" data-canonical-src="https://badgen.net/badge/Developer/MERZAK-X/black?icon=github"></a></p>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
