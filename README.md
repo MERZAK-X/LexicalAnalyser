@@ -1,6 +1,10 @@
 # LexicalAnalyser
 _Lexical Analyser_ is a program that determines whether a `source code` is accepted by a given `DFSA` **Deterministic Finite State Automaton**. 
 
+## Automaton
+
+> Since **LexicalAnalyser** detects Tokens by their final states, the following final states rule must be respected for automaton's tokens !
+
 **Token**|**FinalState**
 :-----|:-----:
 |ID|1|
@@ -24,13 +28,17 @@ Language keywords separated by space
 Transitions {StartState Symbol EndState} [From 8th line to the end of the file]
 Comments {# Comment} [Starting from line 8]
 ```
-#### Example :
+#### Examples :
 
-[SimpleLanguageAutomaton](lib/examples/SimpleLanguageAutomaton.test)
+- [Simple Language Automaton](https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SimpleLanguageAutomaton.test) : Automaton file example
+
+- [Source Code](https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SourceCode.test) : Simple source code file example, that's accepted by the automaton above
 
 ## Usage
+[![Requirements](https://badgen.net/badge/Requirements/.NET%20Core%20Runtime/red)](https://aka.ms/dotnet-core-applaunch)
+>  Please make sure that `.NET Core` runtime is installed before running **LexicalAnalyser**, if not visit : https://aka.ms/dotnet-core-applaunch
 
-``` bash
+```
 merzak-x@PR3C1S10N:~$ dotnet LexicalAnalyzer.dll "/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SimpleLanguageAutomaton.test" "/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SourceCode.test"
 
 Automaton [SimpleLanguageAutomaton] : 
@@ -244,7 +252,6 @@ Process finished with exit code 0.
 ```
 
 ```
-
 Usage: dotnet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [--help]
 
     Arguments:
@@ -258,9 +265,7 @@ Examples:
     LexicalAnalyser.exe lib/examples/SimpleLanguageAutomaton.test lib/examples/SourceCode.test
 
 Copyright (C) 2020 "NUL-X"
-
 ```
 #### Developers
 
-[![MERZAK-X](https://badgen.net/badge/Developer/MERZAK-X/black?icon=github)](https://github.com/MERZAK-X) 
-[![Youssef-AH](https://badgen.net/badge/Developer/Youssef-AH/grey?icon=github)](https://github.com/Youssef-AH)
+[![MERZAK-X](https://badgen.net/badge/Developer/MERZAK-X/black?icon=github)](https://github.com/MERZAK-X)
