@@ -40,6 +40,15 @@ namespace LexicalAnalyzer.Utils
 
         public static bool Contains(this string @string, IEnumerable<string> predicates) => predicates.Any(@string.Contains); // Check whether a string contains any of the elements in the list
         
+        public static IEnumerable<string> Split(this string word, IEnumerable<string> separators)
+        {
+            // Remove the OP from ID/NUMBER using ' '
+            word = separators.Aggregate(word, (current, separator) => current.Replace(separator, " "));
+            // Return each subword
+            foreach (var subword in word.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                yield return subword;
+        }
+        
         public static IEnumerable<string> SplitKeep(this string word, string separator)
         {
             // Separate the OP from ID/NUMBER using ' '

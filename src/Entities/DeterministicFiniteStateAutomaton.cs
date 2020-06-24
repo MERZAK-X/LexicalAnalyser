@@ -68,7 +68,7 @@ namespace LexicalAnalyzer.Entities
             _commentDelimiter = lines[++l].Split(' ').ToArray();
             #endregion
 
-            #region Tansitions
+            #region Transitions
 
             for (var i = ++l; i <= lines.Length - 1; i++)
             {
@@ -109,7 +109,7 @@ namespace LexicalAnalyzer.Entities
 
                 #region Check if rejected word contains OPERATORS
 
-                if (tokenId == 0 && word.Contains(_operators))
+                if (tokenId == 0 && word.Contains(_operators) && word.Split(_operators).All(Accept))
                 {
                     #region Split Tokens using Automaton's Token Spliter
 
@@ -249,7 +249,7 @@ namespace LexicalAnalyzer.Entities
                 #region Check for valid σ(state, letter) Transition, if not found add current subword & restart OP on current symbol
                 state = _transitions[state, char.ToLower(word[index])]; // σ(state, letter) obviously
                 if(state == -1) {
-                    state = 0;
+                    state = _startState; // Reset to the initial state
                     index--; // Restart operating from the current char
                     subwords.Add(subword); // Add the saved subword to the list
                     subword = string.Empty; // Clear the subword builder for next use
