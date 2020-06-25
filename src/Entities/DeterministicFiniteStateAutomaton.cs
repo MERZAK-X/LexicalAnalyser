@@ -11,7 +11,7 @@ namespace LexicalAnalyzer.Entities
     {
         #region Variables
 
-        private int _startState, _statesNumber;
+        private int _startState, _statesNumber, _verbose = 0;
         private int[] _finalStates;
         private List<int> _states = new List<int>();
         private List<string> _keywords;
@@ -26,13 +26,13 @@ namespace LexicalAnalyzer.Entities
 
         #region Contructor & Factory
 
-        public static DFSA CreateInstance(string filename)
+        public static DFSA CreateInstance(string filename, int verbose = 0)
         {
-            var automaton = new DFSA(filename);
+            var automaton = new DFSA(filename, verbose);
             return automaton;
         }
 
-        private DFSA(string filename)
+        private DFSA(string filename, int verbose)
         {
             var lines = File.ReadAllLines(filename);
             var l = 0;
@@ -40,6 +40,7 @@ namespace LexicalAnalyzer.Entities
             #region Automaton info
             _name = Path.GetFileNameWithoutExtension(filename);
             _statesNumber = int.Parse(lines[l]); // Number of states
+            _verbose = verbose; // Display verbose level 
             #endregion
 
             #region Alphabet
@@ -102,7 +103,14 @@ namespace LexicalAnalyzer.Entities
             Token token;
             _tokens?.Clear(); // Clear old results if any
             #endregion
-            
+
+            #region Display the input source code
+            if (_verbose > 0) 
+                Console.WriteLine($"Source code : \n\n```\n{sourceCode}\n```\n");
+            #endregion
+
+            #region Analyse each lexeme of the source code
+
             foreach (var word in words)
             {
                 var tokenId = Accepts(word);
@@ -119,7 +127,7 @@ namespace LexicalAnalyzer.Entities
                 
                         #region Check for Tokens that should be ignored or aggregated
                         switch (tokenId) {
-                            case -1: case -2: // Comment or string.Empty occured 
+                            case -1: case -2: // Comment or string.Empty occurred 
                                 continue;
                             case 13: // Checks for string and aggregates it  
                                 _string += subword.Replace('"', '\0')+' ';
@@ -141,7 +149,7 @@ namespace LexicalAnalyzer.Entities
                 
                 #region Check for Tokens that should be ignored or aggregated
                 switch (tokenId) {
-                    case -1: case -2: // Comment or string.Empty occured 
+                    case -1: case -2: // Comment or string.Empty occurred 
                         continue;
                     case 13: // Checks for string and aggregates it  
                         _string += word.Replace('"', '\0')+' ';
@@ -154,8 +162,12 @@ namespace LexicalAnalyzer.Entities
                 token = new Token(tokenId, ((tokenId==13) ? _string : word));
                 _tokens.Add(token);
             }
-            
+
+            #endregion
+
+            #region Display the analysed Tokens
             Console.WriteLine($@"{_tokens}");
+            #endregion
             
             return _tokens?.Accepted() ?? false; // Avoid NullReferenceException
         }
@@ -297,13 +309,14 @@ namespace LexicalAnalyzer.Entities
 
             #region Transitions {σ}
 
-            automaton += $"}} ; \n\nTransitions: {{{_transitions}\n}}";
+            if(_verbose > 1)
+                automaton += $"}} ; \n\nTransitions: {{{_transitions}\n";
 
             #endregion
 
             #region Initial States {q₀}
 
-            automaton += $" ; \n\nq₀ = {_startState} ; \n";
+            automaton += $"}} ; \n\nq₀ = {_startState} ; \n";
 
             #endregion
 
