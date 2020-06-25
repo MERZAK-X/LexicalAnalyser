@@ -18,6 +18,7 @@
         <AssemblyName>LexicalAnalyser</AssemblyName>
         <PackageId>LexicalAnalyser</PackageId>
         <Product>LexicalAnalyser</Product>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
 </Project>
