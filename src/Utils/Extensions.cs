@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using LexicalAnalyzer.Entities;
+using LexicalAnalyser.Entities;
 
-namespace LexicalAnalyzer.Utils
+namespace LexicalAnalyser.Utils
 {
     public static class Extension
     {

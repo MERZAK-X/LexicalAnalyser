@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LexicalAnalyzer.Utils;
+using LexicalAnalyser.Utils;
 
-namespace LexicalAnalyzer.Entities
+namespace LexicalAnalyser.Entities
 {
     public class DFSA : Automaton
     {

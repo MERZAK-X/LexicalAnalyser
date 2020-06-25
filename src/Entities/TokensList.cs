@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LexicalAnalyzer.Entities
+namespace LexicalAnalyser.Entities
 {
     public class TokensList : List<Token>
     {

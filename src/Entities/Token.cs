@@ -1,4 +1,4 @@
-namespace LexicalAnalyzer.Entities
+namespace LexicalAnalyser.Entities
 {
     public class Token
     {

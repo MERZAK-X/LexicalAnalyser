@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using LexicalAnalyzer.Entities;
+using LexicalAnalyser.Entities;
 
-namespace LexicalAnalyzer
+namespace LexicalAnalyser
 {
     internal static class Program
     {
