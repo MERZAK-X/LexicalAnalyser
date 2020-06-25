@@ -39,7 +39,7 @@ Comments {# Comment} [Starting from line 8]
 >  Please make sure that `.NET Core` runtime is installed before running **LexicalAnalyser**, if not visit : https://aka.ms/dotnet-core-applaunch
 
 ```
-merzak-x@PR3C1S10N:~$ dotnet LexicalAnalyzer.dll "/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SimpleLanguageAutomaton.test" "/home/merzak-x/EMSI/C#/Projects/DFA-Analyzer/lib/examples/SourceCode.test" -v
+merzak-x@PR3C1S10N:~$ dotnet LexicalAnalyzer.dll "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyzer/lib/examples/SimpleLanguageAutomaton.test" "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyzer/lib/examples/SourceCode.test" -v
 
 Automaton [SimpleLanguageAutomaton] : 
 
@@ -59,9 +59,9 @@ BEGIN
 var = "some quite long string with ¢ħæræŧ€rß +°c §.-?";
 IF 13.4 >= 77
 THEN
-    -2variable = 99 - 98;
+    variable = 99 - 98;
 ELSE
-    -1+1var=17.54E^485512
+    var=17.54E^485512
     1-2;9=8;8/9;
     var*-1<=77/18;
     test=99+98+1;
