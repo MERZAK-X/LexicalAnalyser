@@ -5,10 +5,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>LexicalAnalyser</RootNamespace>
         <Company>NUL-X</Company>
-        <AssemblyVersion>1.3</AssemblyVersion>
-        <FileVersion>1.3</FileVersion>
+        <AssemblyVersion>1.4</AssemblyVersion>
+        <FileVersion>1.4</FileVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.3</PackageVersion>
+        <PackageVersion>1.4</PackageVersion>
         <Title>Lexical Analyser</Title>
         <Authors>MERZAK-X</Authors>
         <Description>Lexical Analyser is a program that determines whether a source code is accepted by a given DFSA Deterministic Finite State Automaton.</Description>
