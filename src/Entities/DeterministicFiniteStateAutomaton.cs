@@ -99,7 +99,7 @@ namespace LexicalAnalyzer.Entities
         {
             #region Variables
             char[] separators = {' ', '\n', '\t', ';'};
-            var words = sourceCode.Split(separators);
+            var words = sourceCode.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             Token token;
             _tokens?.Clear(); // Clear old results if any
             #endregion
@@ -236,10 +236,9 @@ namespace LexicalAnalyzer.Entities
 
         public bool Accept(string word)
         {
-            var letters = word.ToCharArray();
             var state = _startState;
 
-            foreach (var letter in letters)
+            foreach (var letter in word.ToLower())
             {
                 state = _transitions[state, letter]; /* σ(state, letter) returns next state */
                 if (state == -1) return false;
