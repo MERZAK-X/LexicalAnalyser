@@ -119,15 +119,16 @@ Process finished with exit code 0.
 ```
 
 ```
-LexicalAnalyser v1.3: https://github.com/MERZAK-X/LexicalAnalyser
+LexicalAnalyser v1.4: https://github.com/MERZAK-X/LexicalAnalyser
 
-Usage: dotnet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [-v] [--help]
+Usage: dotnet LexicalAnalyser.dll [[Automaton] [Sourcecode]] [-v|-vv|-q] [--help]
 
     Arguments:
         Automaton       Path to the Automaton's file
         Source          Path to the source code file to be analysed
     Options:
         -v, -vv         Verbose level, 1 or 2 respectively, if not set 0
+        -q              Quiet (verbose level -1), only display results
         --help          Display this help and exit
         
 Examples:
