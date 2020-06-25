@@ -39,7 +39,7 @@ Comments {# Comment} [Starting from line 8]
 >  Please make sure that `.NET Core` runtime is installed before running **LexicalAnalyser**, if not visit : https://aka.ms/dotnet-core-applaunch
 
 ```
-merzak-x@PR3C1S10N:~$ dotnet LexicalAnalyzer.dll "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyzer/lib/examples/SimpleLanguageAutomaton.test" "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyzer/lib/examples/SourceCode.test" -v
+merzak-x@PR3C1S10N:~$ dotnet LexicalAnalyser.dll "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyser/lib/examples/SimpleLanguageAutomaton.test" "/home/merzak-x/EMSI/C#/Projects/LexicalAnalyser/lib/examples/SourceCode.test" -v
 
 Automaton [SimpleLanguageAutomaton] : 
 
