@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexicalAnalyzerAnalyzer", "LexicalAnalyzer.csproj", "{3972A717-54FF-49F2-82F5-659B499A7CC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexicalAnalyser", "LexicalAnalyser.csproj", "{3972A717-54FF-49F2-82F5-659B499A7CC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

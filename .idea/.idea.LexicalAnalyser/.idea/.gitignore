@@ -2,9 +2,9 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/modules.xml
-/.idea.LexicalAnalyzer.iml
+/.idea.LexicalAnalyser.iml
 /projectSettingsUpdater.xml
+/modules.xml
 /contentModel.xml
 # Datasource local storage ignored files
 /dataSources/
