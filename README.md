@@ -1,5 +1,5 @@
 # LexicalAnalyser
-_Lexical Analyser_ is a program that determines whether a `source code` is accepted by a given `DFSA` **Deterministic Finite State Automaton**. 
+_Lexical Analyser_ is a program that determines whether a `source code` is accepted by a given **Deterministic Finite State Automaton** or not, and outputs each `lexeme` with its corresponding `token type` or whether was it not accepted using the given **DFSA**. 
 
 ## Automaton
 
