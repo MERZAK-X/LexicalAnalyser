@@ -65,7 +65,6 @@
 
             <div id="wiki-content" class="mt-4">
                 <div class="gutter-condensed gutter-lg d-flex flex-column flex-md-row" style="display: flex;justify-content: space-around;align-items: flex-start;overflow: visible;">
-                    
 
                     <div class="flex-shrink-0 col-12 col-md-3" id="menu-bar" style="">
                         <div class="wiki-rightbar">
@@ -82,10 +81,12 @@
                                             </a><br>
 
                                             <li>
-                                                <a href="index.html">Home</a>
+                                                <a href=".">Home</a>
                                                 <ul class="sb-list" style="list-style-type: none">
-                                                    <li><a href="index.html#usage">Usage</a></li>
-                                                    <li><a href="index.html#developers">Developers</a></li>
+                                                    <li><a href=".#usage">Usage</a></li>
+                                                    <li><a href=".#developer">Developer</a></li>
+                                                    <li><a href=".#license">License</a></li>
+                                                    <li><a href=".#releases">Releases</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -316,8 +317,8 @@
                                 <br>
                                 <h2 id="extentions">
                                     <a id="user-content-extentions" class="anchor" href="#extentions" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extentions</h2>
-                                <h3 id="transitions-map">
-                                    <a id="user-content-transitions-map" class="anchor" href="#transitions-map" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Transitions Map</h3>
+                                <h2 class="h3 mb-3" id="transitions-map">
+                                    <a id="user-content-transitions-map" class="anchor" href="#transitions-map" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Transitions Map</h2>
                                 <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">AddIfNotExists</span>(<span class="pl-k">this</span> <span class="pl-en">TransitionsMap</span> <span class="pl-smi">transitionsMap</span>, <span class="pl-en">Transition</span> <span class="pl-smi">transition</span>) </pre></div>
                                 <blockquote>
                                     <p>Adds a new Transition to the TransitionsMap if it doesn't already exist.</p>
@@ -329,25 +330,25 @@
                                 </blockquote>
                                 <br>
                                 <br>
-                                <h3 id="token-type---enum">
+                                <h2 class="h3 mb-3" id="token-type---enum">
                                     <a id="user-content-token-type---enum" class="anchor" href="#token-type---enum" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Token Type  : <code>enum</code>
-                                </h3>
+                                </h2>
                                 <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-en">TokenType</span> <span class="pl-en">GetToken</span>(<span class="pl-k">this</span> <span class="pl-en">TokenType</span> <span class="pl-smi">tokenType</span>, <span class="pl-k">int</span> <span class="pl-smi">tokenId</span>) </pre></div>
                                 <blockquote>
                                     <p>Returns <code>TokenType</code> from a given <code>tokenId : int</code>.</p>
                                 </blockquote>
                                 <br>
                                 <br>
-                                <h3 id="list">
-                                    <a id="user-content-list" class="anchor" href="#list" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>List</h3>
+                                <h2 class="h3 mb-3" id="list">
+                                    <a id="user-content-list" class="anchor" href="#list" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>List</h2>
                                 <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">void</span> <span class="pl-en">AddIfNotExists</span>&lt;<span class="pl-en">T</span>&gt;(<span class="pl-k">this</span> <span class="pl-en">List</span>&lt;<span class="pl-en">T</span>&gt; <span class="pl-smi">list</span>, <span class="pl-en">T</span> <span class="pl-smi">item</span>) </pre></div>
                                 <blockquote>
                                     <p>Adds a new <code>item : T</code> to the List if it doesn't already exist.</p>
                                 </blockquote>
                                 <br>
                                 <br>
-                                <h3 id="string">
-                                    <a id="user-content-string" class="anchor" href="#string" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>String</h3>
+                                <h2 class="h3 mb-3" id="string">
+                                    <a id="user-content-string" class="anchor" href="#string" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>String</h2>
                                 <div class="highlight highlight-source-cs"><pre><span class="pl-k">public</span> <span class="pl-k">static</span> <span class="pl-k">bool</span> <span class="pl-en">Contains</span>(<span class="pl-k">this</span> <span class="pl-k">string</span> <span class="pl-smi">@string</span>, <span class="pl-en">IEnumerable</span>&lt;<span class="pl-k">string</span>&gt; <span class="pl-smi">predicates</span>) </pre></div>
                                 <blockquote>
                                     <p>Returns <code>bool</code> indicating whether a string contains any of the <code>predicates</code>.</p>

@@ -15,8 +15,13 @@
     <link rel="assets" href="https://github.githubassets.com/">
 
 
-    <link crossorigin="anonymous" media="all" integrity="sha512-NC0d+qVeTgvgc3XpqnmqrmnpQnjdeOmUq0XiH+8aCQipkK2dTy+BLVTNHCRJtcZxZCDUd7gBO8ccGLa7nVTYTw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-342d1dfaa55e4e0be07375e9aa79aaae.css">
-    <link crossorigin="anonymous" media="all" integrity="sha512-xnQIMZDOHZTyEPkXHdiwqBPPUAyzDzAU5iDJa6OfzDqwhJdI+0IyBajpzgDAKoegEWUXs4Ze9+/jGhP/OMD98w==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-c674083190ce1d94f210f9171dd8b0a8.css">
+    <!--<link crossorigin="anonymous" media="all" integrity="sha512-NC0d+qVeTgvgc3XpqnmqrmnpQnjdeOmUq0XiH+8aCQipkK2dTy+BLVTNHCRJtcZxZCDUd7gBO8ccGLa7nVTYTw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-342d1dfaa55e4e0be07375e9aa79aaae.css">-->
+    <!--<link crossorigin="anonymous" media="all" integrity="sha512-xnQIMZDOHZTyEPkXHdiwqBPPUAyzDzAU5iDJa6OfzDqwhJdI+0IyBajpzgDAKoegEWUXs4Ze9+/jGhP/OMD98w==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-c674083190ce1d94f210f9171dd8b0a8.css">-->
+
+
+    <link crossorigin="anonymous" media="all" integrity="sha512-/uy49LxdzjR0L36uT6CnmV1omP/8ZHxvOg4zq/dczzABHq9atntjJDmo5B7sV0J+AwVmv0fR0ZyW3EQawzdLFA==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-feecb8f4bc5dce34742f7eae4fa0a799.css">
+    <link crossorigin="anonymous" media="all" integrity="sha512-0qkCidPfjGd13b0fW6wxCDkXzbVws8nxr4qKcjzipVrgHdfSp2yLXje75iRFjmfBiEyvnrj+L1bIq64Cup9JeQ==" rel="stylesheet" href="https://github.githubassets.com/assets/github-d2a90289d3df8c6775ddbd1f5bac3108.css">
+
 
 
     <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
@@ -111,7 +116,9 @@
                                                 <a href=".">Home</a>
                                                 <ul class="sb-list" style="list-style-type: none">
                                                     <li><a href=".#usage">Usage</a></li>
-                                                    <li><a href=".#developers">Developers</a></li>
+                                                    <li><a href=".#developer">Developer</a></li>
+                                                    <li><a href=".#license">License</a></li>
+                                                    <li><a href=".#releases">Releases</a></li>
                                                 </ul>
                                             </li>
                                             <li>
@@ -160,84 +167,34 @@
                         <div id="wiki-body" class="gollum-markdown-content">
                             <div class="markdown-body">
                                 <h1 id="lexicalanalyser">
-                                    <a id="user-content-lexicalanalyser" class="anchor" href="#lexicalanalyser" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>LexicalAnalyser</h1>
-                                <p><em>Lexical Analyser</em> is a program that determines whether a <code>source code</code> is accepted by a given <code>DFSA</code> <strong>Deterministic Finite State Automaton</strong>.</p>
-                                <h2 id="automaton">
-                                    <a id="user-content-automaton" class="anchor" href="#automaton" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Automaton</h2>
-                                <blockquote>
-                                    <p>Since <strong>LexicalAnalyser</strong> detects Tokens by their final states, the following final states rule must be respected for automaton's tokens !</p>
-                                </blockquote>
-                                <table role="table">
-                                    <thead>
-                                    <tr>
-                                        <th align="left"><strong>Token</strong></th>
-                                        <th align="center"><strong>FinalState</strong></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td align="left">ID</td>
-                                        <td align="center">1</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">KEYWORD</td>
-                                        <td align="center">12</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">ARTH OP</td>
-                                        <td align="center">2, 11</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">REL OP</td>
-                                        <td align="center">5, 9, 10</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">STRING</td>
-                                        <td align="center">13</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">INT</td>
-                                        <td align="center">4</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">REAL</td>
-                                        <td align="center">3, 8</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="left">COMMENT</td>
-                                        <td align="center">14</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <h2 id="automtons-file-format">
-                                    <a id="user-content-automatons-file-format" class="anchor" href="#automatons-file-format" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Automaton's file format</h2>
-                                <h4 id="template-">
-                                    <a id="user-content-template-" class="anchor" href="#template-" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Template :</h4>
-                                <pre><code>Number of states
-Alphabets
-Initial State
-Final states separated by space
-Language operators separated by space
-Language keywords separated by space
-Transitions {StartState Symbol EndState} [From 8th line to the end of the file]
-Comments {# Comment} [Starting from line 8]
-</code></pre>
-                                <h4 id="example-">
-                                    <a id="user-content-example-" class="anchor" href="#example-" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Example :</h4>
-                                <ul>
-                                    <li>
-                                        <p><a href="https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SimpleLanguageAutomaton.test">Simple Language Automaton</a> : Automaton file example</p>
-                                    </li>
-                                    <li>
-                                        <p><a href="https://github.com/MERZAK-X/LexicalAnalyser/blob/master/lib/examples/SourceCode.test">Source Code</a> : Simple source code file example, that's accepted by the automaton above</p>
-                                    </li>
-                                </ul>
+                                    <a id="user-content-lexicalanalyser" class="anchor" href="#lexicalanalyser" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><a class="link-gray-dark d-flex no-underline" href="https://github.com/MERZAK-X/LexicalAnalyser">LexicalAnalyser</a></h1>
+                                <p><a class="muted-link" href="https://github.com/MERZAK-X/LexicalAnalyser"><strong><em>Lexical Analyser</em></strong></a> is a <code>Lexer / Tokenizer</code> that determines whether a <code>source code</code> is accepted by a given <strong>Deterministic Finite State Automaton</strong> or not, and outputs each <code>lexeme</code> with its coresponding <code>token type</code> or whether was it not accepted using the given <strong>DFSA</strong>.</p>
+                                
                                 <h2 id="usage">
                                     <a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usage</h2>
 
-                                <p><a href="https://aka.ms/dotnet-core-applaunch" rel="nofollow"><img src="https://camo.githubusercontent.com/214166ed2eb6a00f170ad03b9dbdb498445b8f45/68747470733a2f2f62616467656e2e6e65742f62616467652f526571756972656d656e74732f2e4e4554253230436f726525323052756e74696d652f726564" alt="Requirements" data-canonical-src="https://badgen.net/badge/Requirements/.NET%20Core%20Runtime/red"></a></p>
+                                <p><a href="https://aka.ms/dotnet-core-applaunch" rel="nofollow">
+                                    <svg width="203" height="20" viewBox="0 0 2030 200" xmlns="http://www.w3.org/2000/svg" style="border-radius: 5px;">
+                                        <linearGradient id="a" x2="0" y2="100%">
+                                            <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
+                                            <stop offset="1" stop-opacity=".1"/>
+                                        </linearGradient>
+                                        <mask id="m"><rect width="2030" height="200" rx="30" fill="#FFF"/></mask>
+                                        <g mask="url(#m)">
+                                            <rect width="870" height="200" fill="#555"/>
+                                            <rect width="1160" height="200" fill="#E43" x="870"/>
+                                            <rect width="2030" height="200" fill="url(#a)"/>
+                                        </g>
+                                        <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+                                            <text x="60" y="148" textLength="770" fill="#000" opacity="0.25">Requirements</text>
+                                            <text x="50" y="138" textLength="770">Requirements</text>
+                                            <text x="925" y="148" textLength="1060" fill="#000" opacity="0.25">.NET Core Runtime</text>
+                                            <text x="915" y="138" textLength="1060">.NET Core Runtime</text>
+                                        </g>
+                                    </svg>
+                                </a></p>
                                 <blockquote>
-                                    <p>Please make sure that <code>.NET Core</code> runtime is installed before running <strong>LexicalAnalyser</strong>, if not visit : <a href="https://aka.ms/dotnet-core-applaunch" rel="nofollow">https://aka.ms/dotnet-core-applaunch</a></p>
+                                    <p>Please make sure that <code>.NET Core</code> runtime is installed before running <a class="muted-link" href="https://github.com/MERZAK-X/LexicalAnalyser"><strong>LexicalAnalyser</strong></a>, if not visit : <a href="https://aka.ms/dotnet-core-applaunch" rel="nofollow">https://aka.ms/dotnet-core-applaunch</a></p>
                                 </blockquote>
 
                                 <div class="highlight highlight-source-shell"><pre><span style="color: #EC0101; "><b>merzak-x@PR3C1S10N</b></span>:<span
@@ -696,11 +653,16 @@ Documentation: https://git.io/JfNf4
 
 Copyright (C) 2020 "NUL-X"
 </code></pre>
-                                <h4 id="developers">
-                                    <a id="user-content-developers" class="anchor" href="#developers" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Developers</h4>
+                                
+                                
+                                
+                                <h4 id="developer">
+                                    <a id="user-content-developers" class="anchor" href="#developers" aria-hidden="true">
+                                        <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>
+                                    </a>Developer</h4>
                                 <p>
                                     <a href="https://github.com/MERZAK-X">
-                                    <svg width="151.1" height="20" viewBox="0 0 1511 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <svg width="151.1" height="20" viewBox="0 0 1511 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="border-radius: 5px;">
                                     <linearGradient id="a" x2="0" y2="100%">
                                         <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
                                         <stop offset="1" stop-opacity=".1"/>
@@ -733,8 +695,27 @@ Copyright (C) 2020 "NUL-X"
                                         AGPL-3.0 License
                                     </a>
                                 </p>
-                                <br>
 
+
+                                <h4 id="releases" class="h4 mb-3">
+                                    <a class="link-gray-dark no-underline " href="https://github.com/MERZAK-X/LexicalAnalyser/releases">
+                                        Releases
+                                        <span class="Counter ">4</span>
+                                    </a>
+                                </h4>
+
+                                <a class="link-gray-dark d-flex no-underline" href="https://github.com/MERZAK-X/LexicalAnalyser/releases/tag/v1.4">
+                                    <svg height="16" class="octicon octicon-tag flex-shrink-0 mt-1 text-green" mt="1" classes="flex-shrink-0" color="green" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 7.775V2.75a.25.25 0 01.25-.25h5.025a.25.25 0 01.177.073l6.25 6.25a.25.25 0 010 .354l-5.025 5.025a.25.25 0 01-.354 0l-6.25-6.25a.25.25 0 01-.073-.177zm-1.5 0V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 010 2.474l-5.026 5.026a1.75 1.75 0 01-2.474 0l-6.25-6.25A1.75 1.75 0 011 7.775zM6 5a1 1 0 100 2 1 1 0 000-2z"></path></svg>
+
+                                    <div class="ml-2 min-width-0">
+                                        <div class="d-flex">
+                                            <span class="css-truncate css-truncate-target text-bold mr-2" style="max-width: none;">Lexical Analyser v1.4</span>
+                                            <span class="flex-shrink-0 Label Label--outline Label--outline-green">Latest</span>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <br>
                             </div>
 
 
