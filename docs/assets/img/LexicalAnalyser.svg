@@ -1,75 +1,44 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) made by https://www.flaticon.com/authors/freepik -->
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+     viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <path style="fill:#C3C8F6;" d="M512,512H0V0h512V512z"/>
-<rect x="256" style="fill:#979FEF;" width="256" height="512"/>
-<path style="fill:#FFF5CB;" d="M220,512H0V80h220V512z"/>
-<g>
+    <rect x="256" style="fill:#979FEF;" width="256" height="512"/>
+    <path style="fill:#FFF5CB;" d="M220,512H0V80h220V512z"/>
+    <g>
 	<rect x="49" y="260" style="fill:#FF52A0;" width="122" height="30"/>
-	<rect x="49" y="200" style="fill:#FF52A0;" width="102" height="30"/>
-	<rect x="49" y="140" style="fill:#FF52A0;" width="112" height="30"/>
-	<rect x="49" y="380" style="fill:#FF52A0;" width="92" height="30"/>
-	<rect x="49" y="320" style="fill:#FF52A0;" width="82" height="30"/>
+        <rect x="49" y="200" style="fill:#FF52A0;" width="102" height="30"/>
+        <rect x="49" y="140" style="fill:#FF52A0;" width="112" height="30"/>
+        <rect x="49" y="380" style="fill:#FF52A0;" width="92" height="30"/>
+        <rect x="49" y="320" style="fill:#FF52A0;" width="82" height="30"/>
 </g>
-<g>
+    <g>
 	<rect x="240" y="130" style="fill:#6B77E8;" width="30" height="60"/>
-	<rect x="240" y="220" style="fill:#6B77E8;" width="30" height="60"/>
-	<circle style="fill:#6B77E8;" cx="266" cy="340" r="25"/>
-	<rect x="250" y="390" style="fill:#6B77E8;" width="30" height="60"/>
+        <rect x="240" y="220" style="fill:#6B77E8;" width="30" height="60"/>
+        <circle style="fill:#6B77E8;" cx="266" cy="340" r="25"/>
+        <rect x="250" y="390" style="fill:#6B77E8;" width="30" height="60"/>
 </g>
-<path style="fill:#FFDBA9;" d="M512,110H0V0h512V110z"/>
-<circle style="fill:#6B77E8;" cx="165" cy="55" r="15"/>
-<circle style="fill:#FFDB2D;" cx="115" cy="55" r="15"/>
-<circle style="fill:#FF52A0;" cx="65" cy="55" r="15"/>
-<g>
+    <path style="fill:#FFDBA9;" d="M512,110H0V0h512V110z"/>
+    <circle style="fill:#6B77E8;" cx="165" cy="55" r="15"/>
+    <circle style="fill:#FFDB2D;" cx="115" cy="55" r="15"/>
+    <circle style="fill:#FF52A0;" cx="65" cy="55" r="15"/>
+    <g>
 	<circle style="fill:#3A4DE2;" cx="315" cy="160" r="25"/>
-	<rect x="360" y="130" style="fill:#3A4DE2;" width="30" height="60"/>
-	<circle style="fill:#3A4DE2;" cx="435" cy="160" r="25"/>
-	<circle style="fill:#3A4DE2;" cx="315" cy="250" r="25"/>
-	<circle style="fill:#3A4DE2;" cx="385" cy="250" r="25"/>
-	<rect x="430" y="220" style="fill:#3A4DE2;" width="30" height="60"/>
-	<circle style="fill:#3A4DE2;" cx="336" cy="340" r="25"/>
-	<rect x="376" y="310" style="fill:#3A4DE2;" width="30" height="60"/>
-	<circle style="fill:#3A4DE2;" cx="445" cy="341" r="25"/>
-	<circle style="fill:#3A4DE2;" cx="325" cy="420" r="25"/>
-	<rect x="370" y="390" style="fill:#3A4DE2;" width="30" height="60"/>
-	<circle style="fill:#3A4DE2;" cx="445" cy="420" r="25"/>
-	<rect x="256" y="130" style="fill:#3A4DE2;" width="14" height="60"/>
-	<rect x="256" y="220" style="fill:#3A4DE2;" width="14" height="60"/>
-	<path style="fill:#3A4DE2;" d="M266,315c-3.557,0-6.937,0.747-10,2.086v45.828c3.063,1.339,6.443,2.086,10,2.086
+        <rect x="360" y="130" style="fill:#3A4DE2;" width="30" height="60"/>
+        <circle style="fill:#3A4DE2;" cx="435" cy="160" r="25"/>
+        <circle style="fill:#3A4DE2;" cx="315" cy="250" r="25"/>
+        <circle style="fill:#3A4DE2;" cx="385" cy="250" r="25"/>
+        <rect x="430" y="220" style="fill:#3A4DE2;" width="30" height="60"/>
+        <circle style="fill:#3A4DE2;" cx="336" cy="340" r="25"/>
+        <rect x="376" y="310" style="fill:#3A4DE2;" width="30" height="60"/>
+        <circle style="fill:#3A4DE2;" cx="445" cy="341" r="25"/>
+        <circle style="fill:#3A4DE2;" cx="325" cy="420" r="25"/>
+        <rect x="370" y="390" style="fill:#3A4DE2;" width="30" height="60"/>
+        <circle style="fill:#3A4DE2;" cx="445" cy="420" r="25"/>
+        <rect x="256" y="130" style="fill:#3A4DE2;" width="14" height="60"/>
+        <rect x="256" y="220" style="fill:#3A4DE2;" width="14" height="60"/>
+        <path style="fill:#3A4DE2;" d="M266,315c-3.557,0-6.937,0.747-10,2.086v45.828c3.063,1.339,6.443,2.086,10,2.086
 		c13.807,0,25-11.193,25-25S279.807,315,266,315z"/>
-	<rect x="256" y="390" style="fill:#3A4DE2;" width="24" height="60"/>
+        <rect x="256" y="390" style="fill:#3A4DE2;" width="24" height="60"/>
 </g>
-<rect x="256" style="fill:#FFC473;" width="256" height="110"/>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+    <rect x="256" style="fill:#FFC473;" width="256" height="110"/>
 </svg>
