@@ -46,6 +46,8 @@
             position: sticky;
             top: 20px;
         }
+        
+        #li-container{width: 350px}
 
         @media screen and (max-width: 1000px) {
 
@@ -62,7 +64,13 @@
                 position: static;
                 top: 20px;
             }
+            
+            #li-container{
+                width: 330px
+            }
+            
         }
+        
         .sb-list li::before {
             content: "▸";
             color: grey;
@@ -675,41 +683,41 @@ Copyright (C) 2020 "NUL-X"
                                     </a>Developer</h4>
                                 <p>
                                     <a href="https://github.com/MERZAK-X">
-                                    <svg width="151.1" height="20" viewBox="0 0 1511 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="border-radius: 5px;">
-                                        <linearGradient id="a" x2="0" y2="100%">
-                                            <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
-                                            <stop offset="1" stop-opacity=".1"/>
-                                        </linearGradient>
-                                        <mask id="m"><rect width="1511" height="200" rx="30" fill="#FFF"/></mask>
-                                        <g mask="url(#m)">
-                                            <rect width="821" height="200" fill="#555"/>
-                                            <rect width="690" height="200" fill="#2A2A2A" x="821"/>
-                                            <rect width="1511" height="200" fill="url(#a)"/>
-                                        </g>
-                                        <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
-                                            <text x="220" y="148" textLength="561" fill="#000" opacity="0.25">Developer</text>
-                                            <text x="210" y="138" textLength="561">Developer</text>
-                                            <text x="876" y="148" textLength="590" fill="#000" opacity="0.25">MERZAK-X</text>
-                                            <text x="866" y="138" textLength="590">MERZAK-X</text>
-                                        </g>
-                                        <image x="40" y="35" width="130" height="130" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OTYgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTY1LjkgMzk3LjRjMCAyLTIuMyAzLjYtNS4yIDMuNi0zLjMuMy01LjYtMS4zLTUuNi0zLjYgMC0yIDIuMy0zLjYgNS4yLTMuNiAzLS4zIDUuNiAxLjMgNS42IDMuNnptLTMxLjEtNC41Yy0uNyAyIDEuMyA0LjMgNC4zIDQuOSAyLjYgMSA1LjYgMCA2LjItMnMtMS4zLTQuMy00LjMtNS4yYy0yLjYtLjctNS41LjMtNi4yIDIuM3ptNDQuMi0xLjdjLTIuOS43LTQuOSAyLjYtNC42IDQuOS4zIDIgMi45IDMuMyA1LjkgMi42IDIuOS0uNyA0LjktMi42IDQuNi00LjYtLjMtMS45LTMtMy4yLTUuOS0yLjl6TTI0NC44IDhDMTA2LjEgOCAwIDExMy4zIDAgMjUyYzAgMTEwLjkgNjkuOCAyMDUuOCAxNjkuNSAyMzkuMiAxMi44IDIuMyAxNy4zLTUuNiAxNy4zLTEyLjEgMC02LjItLjMtNDAuNC0uMy02MS40IDAgMC03MCAxNS04NC43LTI5LjggMCAwLTExLjQtMjkuMS0yNy44LTM2LjYgMCAwLTIyLjktMTUuNyAxLjYtMTUuNCAwIDAgMjQuOSAyIDM4LjYgMjUuOCAyMS45IDM4LjYgNTguNiAyNy41IDcyLjkgMjAuOSAyLjMtMTYgOC44LTI3LjEgMTYtMzMuNy01NS45LTYuMi0xMTIuMy0xNC4zLTExMi4zLTExMC41IDAtMjcuNSA3LjYtNDEuMyAyMy42LTU4LjktMi42LTYuNS0xMS4xLTMzLjMgMi42LTY3LjkgMjAuOS02LjUgNjkgMjcgNjkgMjcgMjAtNS42IDQxLjUtOC41IDYyLjgtOC41czQyLjggMi45IDYyLjggOC41YzAgMCA0OC4xLTMzLjYgNjktMjcgMTMuNyAzNC43IDUuMiA2MS40IDIuNiA2Ny45IDE2IDE3LjcgMjUuOCAzMS41IDI1LjggNTguOSAwIDk2LjUtNTguOSAxMDQuMi0xMTQuOCAxMTAuNSA5LjIgNy45IDE3IDIyLjkgMTcgNDYuNCAwIDMzLjctLjMgNzUuNC0uMyA4My42IDAgNi41IDQuNiAxNC40IDE3LjMgMTIuMUM0MjguMiA0NTcuOCA0OTYgMzYyLjkgNDk2IDI1MiA0OTYgMTEzLjMgMzgzLjUgOCAyNDQuOCA4ek05Ny4yIDM1Mi45Yy0xLjMgMS0xIDMuMy43IDUuMiAxLjYgMS42IDMuOSAyLjMgNS4yIDEgMS4zLTEgMS0zLjMtLjctNS4yLTEuNi0xLjYtMy45LTIuMy01LjItMXptLTEwLjgtOC4xYy0uNyAxLjMuMyAyLjkgMi4zIDMuOSAxLjYgMSAzLjYuNyA0LjMtLjcuNy0xLjMtLjMtMi45LTIuMy0zLjktMi0uNi0zLjYtLjMtNC4zLjd6bTMyLjQgMzUuNmMtMS42IDEuMy0xIDQuMyAxLjMgNi4yIDIuMyAyLjMgNS4yIDIuNiA2LjUgMSAxLjMtMS4zLjctNC4zLTEuMy02LjItMi4yLTIuMy01LjItMi42LTYuNS0xem0tMTEuNC0xNC43Yy0xLjYgMS0xLjYgMy42IDAgNS45IDEuNiAyLjMgNC4zIDMuMyA1LjYgMi4zIDEuNi0xLjMgMS42LTMuOSAwLTYuMi0xLjQtMi4zLTQtMy4zLTUuNi0yeiIvPjwvc3ZnPg=="/>
-                                    </svg>
+                                        <svg width="133" height="20" viewBox="0 0 1330 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="border-radius: 5px;">
+                                            <linearGradient id="a" x2="0" y2="100%">
+                                                <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
+                                                <stop offset="1" stop-opacity=".1"/>
+                                            </linearGradient>
+                                            <mask id="m"><rect width="1330" height="200" rx="30" fill="#FFF"/></mask>
+                                            <g mask="url(#m)">
+                                                <rect width="640" height="200" fill="#555"/>
+                                                <rect width="690" height="200" fill="#2A2A2A" x="640"/>
+                                                <rect width="1330" height="200" fill="url(#a)"/>
+                                            </g>
+                                            <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+                                                <text x="220" y="148" textLength="380" fill="#000" opacity="0.25">GitHub</text>
+                                                <text x="210" y="138" textLength="380">GitHub</text>
+                                                <text x="695" y="148" textLength="590" fill="#000" opacity="0.25">MERZAK-X</text>
+                                                <text x="685" y="138" textLength="590">MERZAK-X</text>
+                                            </g>
+                                            <image x="40" y="35" width="130" height="130" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OTYgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTY1LjkgMzk3LjRjMCAyLTIuMyAzLjYtNS4yIDMuNi0zLjMuMy01LjYtMS4zLTUuNi0zLjYgMC0yIDIuMy0zLjYgNS4yLTMuNiAzLS4zIDUuNiAxLjMgNS42IDMuNnptLTMxLjEtNC41Yy0uNyAyIDEuMyA0LjMgNC4zIDQuOSAyLjYgMSA1LjYgMCA2LjItMnMtMS4zLTQuMy00LjMtNS4yYy0yLjYtLjctNS41LjMtNi4yIDIuM3ptNDQuMi0xLjdjLTIuOS43LTQuOSAyLjYtNC42IDQuOS4zIDIgMi45IDMuMyA1LjkgMi42IDIuOS0uNyA0LjktMi42IDQuNi00LjYtLjMtMS45LTMtMy4yLTUuOS0yLjl6TTI0NC44IDhDMTA2LjEgOCAwIDExMy4zIDAgMjUyYzAgMTEwLjkgNjkuOCAyMDUuOCAxNjkuNSAyMzkuMiAxMi44IDIuMyAxNy4zLTUuNiAxNy4zLTEyLjEgMC02LjItLjMtNDAuNC0uMy02MS40IDAgMC03MCAxNS04NC43LTI5LjggMCAwLTExLjQtMjkuMS0yNy44LTM2LjYgMCAwLTIyLjktMTUuNyAxLjYtMTUuNCAwIDAgMjQuOSAyIDM4LjYgMjUuOCAyMS45IDM4LjYgNTguNiAyNy41IDcyLjkgMjAuOSAyLjMtMTYgOC44LTI3LjEgMTYtMzMuNy01NS45LTYuMi0xMTIuMy0xNC4zLTExMi4zLTExMC41IDAtMjcuNSA3LjYtNDEuMyAyMy42LTU4LjktMi42LTYuNS0xMS4xLTMzLjMgMi42LTY3LjkgMjAuOS02LjUgNjkgMjcgNjkgMjcgMjAtNS42IDQxLjUtOC41IDYyLjgtOC41czQyLjggMi45IDYyLjggOC41YzAgMCA0OC4xLTMzLjYgNjktMjcgMTMuNyAzNC43IDUuMiA2MS40IDIuNiA2Ny45IDE2IDE3LjcgMjUuOCAzMS41IDI1LjggNTguOSAwIDk2LjUtNTguOSAxMDQuMi0xMTQuOCAxMTAuNSA5LjIgNy45IDE3IDIyLjkgMTcgNDYuNCAwIDMzLjctLjMgNzUuNC0uMyA4My42IDAgNi41IDQuNiAxNC40IDE3LjMgMTIuMUM0MjguMiA0NTcuOCA0OTYgMzYyLjkgNDk2IDI1MiA0OTYgMTEzLjMgMzgzLjUgOCAyNDQuOCA4ek05Ny4yIDM1Mi45Yy0xLjMgMS0xIDMuMy43IDUuMiAxLjYgMS42IDMuOSAyLjMgNS4yIDEgMS4zLTEgMS0zLjMtLjctNS4yLTEuNi0xLjYtMy45LTIuMy01LjItMXptLTEwLjgtOC4xYy0uNyAxLjMuMyAyLjkgMi4zIDMuOSAxLjYgMSAzLjYuNyA0LjMtLjcuNy0xLjMtLjMtMi45LTIuMy0zLjktMi0uNi0zLjYtLjMtNC4zLjd6bTMyLjQgMzUuNmMtMS42IDEuMy0xIDQuMyAxLjMgNi4yIDIuMyAyLjMgNS4yIDIuNiA2LjUgMSAxLjMtMS4zLjctNC4zLTEuMy02LjItMi4yLTIuMy01LjItMi42LTYuNS0xem0tMTEuNC0xNC43Yy0xLjYgMS0xLjYgMy42IDAgNS45IDEuNiAyLjMgNC4zIDMuMyA1LjYgMi4zIDEuNi0xLjMgMS42LTMuOSAwLTYuMi0xLjQtMi4zLTQtMy4zLTUuNi0yeiIvPjwvc3ZnPg=="/>
+                                        </svg>
                                     </a>
                                 </p>
                                 
-                                <!-- This might be displayed as an href if the firefox tracking is enabled 
-                                <div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="merzak-mohamed">
+                                <!-- Will be displayed as an href if the firefox tracking is enabled -->
+                                <!--<div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="merzak-mohamed">
                                     <a class="LI-simple-link" href='https://ma.linkedin.com/in/merzak-mohamed?trk=profile-badge'>Mohamed M.</a>
                                 </div>-->
                                 
-                                <!-- so here's a more static badge with no tracking lol -->
+                                <!-- so here's a static badge with no tracking lol -->
                                 <div class="LI-profile-badge" data-version="v1" data-size="large" data-locale="en_US" data-type="horizontal"
                                      data-theme="light" data-vanity="merzak-mohamed" data-rendered="true" data-uid="999999">
                                     <a class="LI-simple-link" href="https://ma.linkedin.com/in/merzak-mohamed?trk=profile-badge">Mohamed M.</a>
                                     <div>
                                         <link rel="stylesheet" href="https://static-exp1.licdn.com/sc/h/bi3v1f73ewvqbszoipmrd935p">
-                                        <div dir="ltr" class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
-                                             style="display: none;width: 350px">
+                                        <div dir="ltr" id="li-container" class="LI-badge-container-horizontal-light LI-badge-container horizontal light large"
+                                             style="display: none">
                                             <div class="LI-profile-badge-header LI-name-container LI-row">
                                                 <div class="LI-col">
                                                     <div class="LI-profile-pic-container"><img
